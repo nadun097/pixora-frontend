@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Jersey';
+    src: url('./assets/fonts/Jersey10-Regular.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter_28pt-Regular.ttf') format('truetype');
+    font-style: normal;
+}
+
+:root {
+    --black: #000000;
+    --white: #ffffff80;
+    --white-2: #ffffff99;
+    --white-3: #ffffff;
+    --white-4: #ffffffb2;
+
+    --font-size-l: 32px;
+    --font-size-m: 24px;
+    --font-size-s: 16px;
+    --font-size-xl: 36px;
+    --font-size-xxl: 40px;
+    --font-size-xxxl: 64px;
+    --font-size-xxxxl: 150px;
+}
+
+/* Add your other CSS rules below */
