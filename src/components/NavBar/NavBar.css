@@ -1,0 +1,80 @@
+.inter-bold-white-24px {
+    color: var(--white-4);
+    font-family: 'Inter';
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.NavBar {
+    background-color: #2e2e2eb2;
+    height: 116px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px; /* Optional: Add some padding */
+    box-sizing: border-box;
+}
+
+.pi-xora-logo {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.pi-xora-text {
+    background-color: transparent;
+    color: var(--white-3);
+    font-family: 'Jersey';
+    font-size: var(--font-size-xxxl);
+    font-style: normal;
+    font-weight: 400;
+    left: 143px;
+    position: absolute;
+    top: 22px;
+}
+
+.pi-xora-icon {
+    background-color: transparent;
+    height: 71px;
+    left: 78px;
+    object-fit: cover;
+    position: absolute;
+    top: 24px;
+    width: 72px;
+}
+
+.NavBar-Buttons {
+    display: flex;
+    justify-content: center; /* Center buttons within the container */
+    align-items: center;
+    flex-grow: 2;
+    gap: 20px; /* Optional: Add some space between buttons */
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1vw;
+}
+
+.marketplace-button,
+.live-auctions-button,
+.digital-arts-button,
+.photographs-button {
+    background-color: transparent;
+    height: auto;
+    letter-spacing: 0.00px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+
+
