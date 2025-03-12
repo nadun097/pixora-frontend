@@ -1,0 +1,206 @@
+import React, { useEffect, useState, useRef } from "react";
+import "./Card.css";
+
+interface CardProps {
+    image: string;
+    title: string;
+    description: string;
+    line: string;
+    price: string;
+}
+
+{/* Include Card Component */ }
+//  <div className="home-container">
+//  <Card 
+//      image={img1} 
+//      title="Artwork" 
+//      description="CURRENT BID."
+//      line ="________________________________________" 
+//      price ="ETH 0.067"
+//  />
+// </div>
+
+const Card: React.FC<CardProps> = ({ image, title, description, line, price }) => {
+    const [textColor, setTextColor] = useState<string>("white");
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    // Function to convert RGB to HSL
+    const rgbToHsl = (r: number, g: number, b: number) => {
+        r /= 255;
+        g /= 255;
+        b /= 255;
+
+        let max = Math.max(r, g, b);
+        let min = Math.min(r, g, b);
+        let h = 0;
+        let s = 0;
+        let l = (max + min) / 2;
+
+        if (max !== min) {
+            let d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            if (max === r) {
+                h = (g - b) / d + (g < b ? 6 : 0);
+            } else if (max === g) {
+                h = (b - r) / d + 2;
+            } else {
+                h = (r - g) / d + 4;
+            }
+            h /= 6;
+        }
+
+        return {
+            h: h * 360, // Hue in degrees
+            s: s * 100, // Saturation in percentage
+            l: l * 100, // Lightness in percentage
+        };
+    };
+
+    // Function to convert HSL back to RGB
+    const hslToRgb = (h: number, s: number, l: number) => {
+        s /= 100;
+        l /= 100;
+
+        let c = (1 - Math.abs(2 * l - 1)) * s;
+        let x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+        let m = l - c / 5;
+
+        let r = 0,
+            g = 0,
+            b = 0;
+
+        if (h >= 0 && h < 60) {
+            r = c;
+            g = x;
+            b = 0;
+        } else if (h >= 60 && h < 120) {
+            r = x;
+            g = c;
+            b = 0;
+        } else if (h >= 120 && h < 180) {
+            r = 0;
+            g = c;
+            b = x;
+        } else if (h >= 180 && h < 240) {
+            r = 0;
+            g = x;
+            b = c;
+        } else if (h >= 240 && h < 300) {
+            r = x;
+            g = 0;
+            b = c;
+        } else {
+            r = c;
+            g = 0;
+            b = x;
+        }
+
+        r = Math.round((r + m) * 255);
+        g = Math.round((g + m) * 255);
+        b = Math.round((b + m) * 255);
+
+        return `rgb(${r}, ${g}, ${b})`;
+    };
+
+    // Function to adjust the lightness to the desired range (50% to 100%)
+    const adjustLightness = (h: number, s: number, l: number): { h: number, s: number, l: number } => {
+        let newL = l;
+        if (newL >= 25 && newL <= 80) {
+            newL = newL <= 50 ? 50 : 100; // Adjusting lightness
+        }
+
+        return { h, s, l: newL };
+    };
+
+    useEffect(() => {
+        const imgElement = imgRef.current;
+        if (!imgElement) return;
+
+        const handleImageLoad = () => {
+            try {
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+                if (!ctx) return;
+
+                canvas.width = imgElement.width;
+                canvas.height = imgElement.height;
+                ctx.drawImage(imgElement, 0, 0, imgElement.width, imgElement.height);
+
+                // Get all pixels in the image
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const pixels = imageData.data;
+
+                // Count occurrences of each color
+                const colorMap: { [key: string]: number } = {};
+                for (let i = 0; i < pixels.length; i += 4) {
+                    const r = pixels[i];
+                    const g = pixels[i + 1];
+                    const b = pixels[i + 2];
+                    const colorKey = `${r},${g},${b}`;
+
+                    colorMap[colorKey] = (colorMap[colorKey] || 0) + 1;
+                }
+
+                // Find the most common color, but filter out dark colors
+                let selectedColor: string | null = null;
+                let maxLightness = 0;
+
+                Object.entries(colorMap).forEach(([colorKey, count]) => {
+                    const [r, g, b] = colorKey.split(",").map(Number);
+                    const { h, s, l } = rgbToHsl(r, g, b);
+
+                    // Only consider colors in the desired HSL range (hue, saturation, and lightness)
+                    if (l >= 15 && l <= 100 && s >= 0 && s <= 100) {
+                        // Adjust lightness to fit the range
+                        const { h: newH, s: newS, l: newL } = adjustLightness(h, s, l);
+
+                        if (newL > maxLightness) {
+                            selectedColor = colorKey;
+                            maxLightness = newL;
+                        }
+                    }
+                });
+
+                if (selectedColor) {
+                    const [r, g, b] = selectedColor.split(",").map(Number);
+
+                    // Convert adjusted HSL back to RGB
+                    const { h, s, l } = rgbToHsl(r, g, b);
+                    const adjustedColor = hslToRgb(h, s, l);
+
+                    setTextColor(adjustedColor);
+                } else {
+                    // Fallback if no valid color found
+                    setTextColor("white");
+                }
+            } catch (error) {
+                console.error("Error extracting color:", error);
+                setTextColor("black"); // Fallback
+            }
+        };
+
+        imgElement.addEventListener("load", handleImageLoad);
+        return () => imgElement.removeEventListener("load", handleImageLoad);
+    }, [image]);
+
+    return (
+        <div className="card">
+            <img
+                ref={imgRef}
+                className="card-image"
+                src={image}
+                alt={title}
+                crossOrigin="anonymous"
+            />
+            <div className="card-content" style={{ color: textColor }}>
+                <h3 className="card-title">{title}</h3>
+                <p className="line">{line}</p>
+                <p className="card-description">{description}</p>
+                <p className="priceCard">{price}</p>
+                <button className="card-button"></button>
+            </div>
+        </div>
+    );
+};
+
+export default Card;

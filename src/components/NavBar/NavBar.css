@@ -1,15 +1,17 @@
 .inter-bold-white-24px {
     color: var(--white-4);
     font-family: 'Inter';
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
     font-style: normal;
     font-weight: 600;
     font-family: sans-serif;
+    text-align: center;
+    color: rgb(255, 255, 255);
 }
 
 .NavBar {
     background-color: #2e2e2eb2;
-    height: 116px;
+    height: 80px;
     width: 100vw;
     position: fixed;
     top: 0;
@@ -22,47 +24,76 @@
 }
 
 .pi-xora-logo {
-    display: flex;
+ 
+    /* display: flex;
     align-items: center;
-    flex: 1;
+    flex: 1; */
 }
 
 .pi-xora-text {
     background-color: transparent;
     color: var(--white-3);
     font-family: 'Jersey';
-    font-size: var(--font-size-xxxl);
+    font-size: var(--font-size-xxl);
     font-style: normal;
     font-weight: 400;
-    left: 143px;
+    left: 108px;
     position: absolute;
-    top: 22px;
+    top: 18px;
 }
 
 .pi-xora-icon {
     background-color: transparent;
-    height: 71px;
-    left: 78px;
+    height: 50px;
+    left: 60px; /* Removed duplicate left property */
     object-fit: cover;
     position: absolute;
-    top: 24px;
-    width: 72px;
+    top: 15px;
+    width: auto;
+    color: rgb(255, 255, 255);
+    
+    
 }
+
+
+
+.nav-button {
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-button:hover {
+    color: rgb(255, 255, 255); 
+    transform: scale(1.0); 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); 
+}
+
 
 .NavBar-Buttons {
     display: flex;
     justify-content: center; /* Center buttons within the container */
     align-items: center;
     flex-grow: 2;
-    gap: 20px; /* Optional: Add some space between buttons */
+    gap: 30px; /* Optional: Add some space between buttons */
+   
 }
 
 .profile-button {
+    color: rgb(255, 255, 255); 
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-right: 1vw;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
 }
+
+.profile-button:hover {
+    transform: scale(1); 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); 
+}
+
 
 .marketplace-button,
 .live-auctions-button,
@@ -75,6 +106,13 @@
     text-align: center;
     width: fit-content;
 }
+
+
+
+
+
+
+
 
 
 

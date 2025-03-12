@@ -1,14 +1,13 @@
-import './HomePage.css'
-// import { Link } from 'react-router-dom'
-import NavBar from '../../components/NavBar/NavBar'
+import './HomePage.css';
+import NavBar from '../../components/NavBar/NavBar';
 
 function HomePage() {
     return (
         <>
-            {/*import Navbar*/}
-            <NavBar></NavBar>
+            {/* Import Navbar */}
+            <NavBar />
         </>
-    )
+    );
 }
 
-export default HomePage
+export default HomePage;
