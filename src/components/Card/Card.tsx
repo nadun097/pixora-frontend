@@ -5,7 +5,6 @@ interface CardProps {
     image: string;
     title: string;
     description: string;
-    line: string;
     price: string;
 }
 
@@ -20,7 +19,7 @@ interface CardProps {
 //  />
 // </div>
 
-const Card: React.FC<CardProps> = ({ image, title, description, line, price }) => {
+const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
     const [textColor, setTextColor] = useState<string>("white");
     const imgRef = useRef<HTMLImageElement>(null);
 
@@ -30,14 +29,14 @@ const Card: React.FC<CardProps> = ({ image, title, description, line, price }) =
         g /= 255;
         b /= 255;
 
-        let max = Math.max(r, g, b);
-        let min = Math.min(r, g, b);
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
         let h = 0;
         let s = 0;
-        let l = (max + min) / 2;
+        const l = (max + min) / 2;
 
         if (max !== min) {
-            let d = max - min;
+            const d = max - min;
             s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
             if (max === r) {
                 h = (g - b) / d + (g < b ? 6 : 0);
@@ -61,13 +60,13 @@ const Card: React.FC<CardProps> = ({ image, title, description, line, price }) =
         s /= 100;
         l /= 100;
 
-        let c = (1 - Math.abs(2 * l - 1)) * s;
-        let x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-        let m = l - c / 5;
+        const c = (1 - Math.abs(2 * l - 1)) * s;
+        const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+        const m = l - c / 5;
 
-        let r = 0,
-            g = 0,
-            b = 0;
+        let r: number,
+            g: number,
+            b: number;
 
         if (h >= 0 && h < 60) {
             r = c;
@@ -145,14 +144,14 @@ const Card: React.FC<CardProps> = ({ image, title, description, line, price }) =
                 let selectedColor: string | null = null;
                 let maxLightness = 0;
 
-                Object.entries(colorMap).forEach(([colorKey, count]) => {
+                Object.entries(colorMap).forEach(([colorKey]) => {
                     const [r, g, b] = colorKey.split(",").map(Number);
                     const { h, s, l } = rgbToHsl(r, g, b);
 
                     // Only consider colors in the desired HSL range (hue, saturation, and lightness)
                     if (l >= 15 && l <= 100 && s >= 0 && s <= 100) {
                         // Adjust lightness to fit the range
-                        const { h: newH, s: newS, l: newL } = adjustLightness(h, s, l);
+                        const {l: newL } = adjustLightness(h, s, l);
 
                         if (newL > maxLightness) {
                             selectedColor = colorKey;
@@ -160,7 +159,6 @@ const Card: React.FC<CardProps> = ({ image, title, description, line, price }) =
                         }
                     }
                 });
-
                 if (selectedColor) {
                     const [r, g, b] = selectedColor.split(",").map(Number);
 
@@ -194,7 +192,7 @@ const Card: React.FC<CardProps> = ({ image, title, description, line, price }) =
             />
             <div className="card-content" style={{ color: textColor }}>
                 <h3 className="card-title">{title}</h3>
-                <p className="line">{line}</p>
+                <p className="line">________________________________________</p>
                 <p className="card-description">{description}</p>
                 <p className="priceCard">{price}</p>
                 <button className="card-button"></button>
