@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@types/color-thief-node": "^1.0.4",
     "colorthief": "^2.6.0",
     "node-vibrant": "^4.0.3",

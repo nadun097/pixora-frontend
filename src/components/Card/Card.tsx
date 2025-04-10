@@ -160,6 +160,7 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
                     }
                 });
                 if (selectedColor) {
+                    // @ts-ignore
                     const [r, g, b] = selectedColor.split(",").map(Number);
 
                     // Convert adjusted HSL back to RGB
