@@ -3,14 +3,14 @@ const path = require('path');
 const port = process.env.PORT || 3000;
 const app = express();
 
-// Serve static files from the dist directory
+// Serve static files
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// For any request that doesn't match a static file, send the index.html
+// Handle SPA routing
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });

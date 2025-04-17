@@ -1,1 +1,1 @@
-web: npm start
+aweb: bin/start-nginx-solo
