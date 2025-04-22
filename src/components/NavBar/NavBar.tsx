@@ -1,25 +1,19 @@
-import './NavBar.css'
-
+import styles from "./NavBar.module.css";
 
 function NavBar() {
     return (
-        <div className="NavBar">
-            <img src="src/assets/images/pixoraLogo.png" className="pi-xora-icon" />
+        <div className={styles.NavBar}>
+            <img src="src/assets/images/pixoraLogo.png" className={styles.pixoraIcon}/>
             {/*NavBar Buttons*/}
-            <div className="NavBar-Buttons">
-                <div className="nav-button nav-button-marketplace-button inter-bold-white-24px">Marketplace</div>
-                <div className="nav-button nav-button-live-auctions-button inter-bold-white-24px">Live Auctions</div>
-                <div className="nav-button nav-button-digital-arts-button inter-bold-white-24px">Digital Arts</div>
-                <div className="nav-button nav-button-photographs-button inter-bold-white-24px">Photographs</div>
+            <div className={styles.NavBarButtons}>
+                <div className={styles.NavButton}>Marketplace</div>
+                <div className={styles.NavButton}>Live Auctions</div>
+                <div className={styles.NavButton}>Digital Arts</div>
+                <div className={styles.NavButton}>Photographs</div>
             </div>
-
-            <div className="profile-button">
-                    <button className="login-button">
-                        <div className="overlap-group">
-                            <div className="text-wrapper">Login</div>
-                        </div>
-                    </button>
-            </div>
+            <button className={styles.loginButton}>
+                <div className={styles.textWrapper}>Login</div>
+            </button>
         </div>
     )
 }
