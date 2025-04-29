@@ -16,6 +16,12 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Inter-ExtraLight';
+    src: url('./assets/fonts/Inter_28pt-ExtraLight.ttf') format('truetype');
+    font-style: normal;
+}
+
 :root {
     --black: #000000;
     --white: #ffffff80;
