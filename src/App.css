@@ -32,4 +32,7 @@
     --font-size-xxxxl: 150px;
 }
 
-/* Add your other CSS rules below */
+body {
+    background-color: rgb(17, 17, 17);
+    overflow-x: hidden;
+}
