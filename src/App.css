@@ -22,6 +22,12 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Inter-Black';
+    src: url('./assets/fonts/Inter_28pt-Black.ttf') format('truetype');
+    font-style: normal;
+}
+
 :root {
     --black: #000000;
     --white: #ffffff80;
