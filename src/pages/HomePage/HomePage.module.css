@@ -1,11 +1,353 @@
-body{
-    background-color: rgb(24, 24, 24);
-}
-
-.home-container {
+.homeContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 0px;
 }
 
+.landingPageImage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.landingPageImage img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.homepageContainer {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    margin-top: 0px;
+}
+
+.tileCollection {
+    color: #8f8f8f;
+    font-size: 1300%;
+    margin-top: -150px;
+    margin-left: 16%;
+    letter-spacing: 0.01px;
+    z-index: 1;
+    position: relative;
+    font-family: "Inter-Black";
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    margin-top: -330px;
+    z-index: 2;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    scale: 220%;
+    color: #f0f0f0;
+    font-family: "Inter-Bold";
+    z-index: 1;
+    position: relative;
+}
+
+.nonbold h1 {
+    font-weight: 100 !important;
+    font-family: "Inter-ExtraLight";
+}
+
+.sectionHeaderSpace {
+    margin-top: -3px;
+    font-weight: 200 !important;
+    scale: 1.1;
+    padding: 0px 5px 0px 5px;
+}
+
+.subHedding {
+    color: #b4b4b4;
+    font-weight: 100 !important;
+    font-family: "Inter-ExtraLight";
+}
+
+.tagButton {
+    background: linear-gradient(to right, #252525, #3b3b3b);
+    border-radius: 50px;
+    padding: 10px;
+    color: #696969;
+    width: 110px;
+    border: 1px solid rgb(59, 59, 59);
+    margin: -10px 20px 40px 0px;
+    font-family: "Inter";
+    transition: ease 0.3s;
+}
+
+.tagButton:hover {
+    background: linear-gradient(to right, #3b3b3b, #252525);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.sectionTag {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.nftHighlight {
+    background-color: #2c2c2c;
+    padding: 2rem;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.nftHighlightImage {
+    position: absolute;
+    display: inline-flex;
+    top: 0;
+    right: 0;
+    width: auto;
+    z-index: 2;
+    margin-top: -50px;
+}
+
+.highlightMovingImage1 {
+    margin-right: -1000px;
+    z-index: 5;
+    position: relative;
+    animation: slideLeftRight 3.22s ease-in-out infinite alternate;
+    /* optional */
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.nftHighlightImage img {
+    height: auto;
+    object-fit: cover;
+}
+
+.nftHighlightTopic {
+    font-size: 2rem;
+    font-weight: bolder;
+    line-height: 1px;
+    color: #979696;
+    font-family: "Inter-Bold";
+}
+
+.nftHighlightContent {
+    position: relative;
+    z-index: 1;
+}
+
+.yellowDescriptionBoard {
+    background-color: #ffd000;
+    color: #423601ce;
+    border-radius: 10px;
+    padding: 0.1rem 0.5rem 0.5rem 2rem;
+    font-size: 1.5rem;
+    font-family: "Inter-Bold";
+}
+
+.nftDescription {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #979696;
+    font-family: "Inter-ExtraLight";
+}
+
+.nftDescription1:hover {
+    animation: paddingValue 1s ease-in-out infinite alternate,
+    colorValue 1s ease-in-out infinite alternate;
+    overflow: hidden;
+    text-shadow: 0 4px 1px #00FF99;
+}
+
+@keyframes colorValue {
+    0% {
+        text-shadow: 0px 0px 1px #ddddddd2;
+    }
+    100% {
+        text-shadow: -10px 0px 1px #dddddd00;
+    }
+}
+
+@keyframes paddingValue {
+    0% {
+        padding: 0px 0px 0px 0px;
+    }
+    85% {
+        padding: 0px 25px 0px 10px;
+    }
+
+    100% {
+        padding: 0px 25px 0px 10px;
+    }
+}
+
+.nftDescription2 {
+    padding: 0px 0px 0px 10px;
+    transition: padding 0.3s ease 0.3s;
+}
+
+.yellowBoardText p {
+    line-height: 1px;
+    font-family: "Inter-ExtraLight";
+}
+
+.nftBadge {
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.statsContainer {
+    margin: 20px 0px 20px 0px;
+    background-color: #00FF99;
+    border-radius: 30px;
+    line-height: 1;
+}
+
+.alignContent {
+    display: flex;
+    justify-content: space-around;
+}
+
+.statItem {
+    color: #01472b;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    text-align: start;
+    font-family: "Inter-ExtraLight";
+}
+
+.statTopic {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 1.5rem;
+    color: #01472b;
+    font-family: "Inter";
+}
+
+.statTopic h3 {
+    font-family: "Inter-Bold";
+}
+
+.statItemLine {
+    display: flex;
+}
+
+.statItem p {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin: 0px 10px 0px 0px;
+    padding: 0;
+}
+
+.count {
+    font-size: 7rem;
+    margin: 0;
+    padding: 0px;
+    line-height: 1;
+    font-family: 'Jersey';
+}
+
+.aboutSection {
+    margin-top: 40px;
+    background-color: #202020;
+    padding: 10px 10px 30px 10px;
+    z-index: 4;
+}
+
+.aboutContent {
+    font-family: "Inter-ExtraLight";
+    max-width: 1200px;
+    font-size: 1.8rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: #b4b4b4;
+    font-weight: 200;
+    text-align: center;
+}
+
+.collaboratorLogos {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.collaboratorSection {
+    margin-top: 100px;
+}
+
+.highlightMovingImage2 {
+    animation: slideLeftRight 3s ease-in-out infinite alternate;
+    overflow: hidden;
+}
+
+@keyframes slideLeftRight {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(40px);
+    }
+}
+
+.decorCard {
+    position: relative;
+    margin-top: -100vh;
+    z-index: 0;
+}
+
+.decorCard::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    width: 20%;
+    height: 100%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgb(0, 0, 0) 100%, transparent 100%);
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.decorCard::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    width: 20%;
+    height: 100%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgb(0, 0, 0) 100%, transparent 100%);
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
