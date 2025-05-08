@@ -101,11 +101,10 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
         return `rgb(${r}, ${g}, ${b})`;
     };
 
-    // Function to adjust the lightness to the desired range (50% to 100%)
     const adjustLightness = (h: number, s: number, l: number): { h: number, s: number, l: number } => {
         let newL = l;
         if (newL >= 25 && newL <= 80) {
-            newL = newL <= 50 ? 50 : 100; // Adjusting lightness
+            newL = newL <= 50 ? 50 : 100; 
         }
 
         return { h, s, l: newL };
@@ -125,11 +124,10 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
                 canvas.height = imgElement.height;
                 ctx.drawImage(imgElement, 0, 0, imgElement.width, imgElement.height);
 
-                // Get all pixels in the image
+               
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                 const pixels = imageData.data;
 
-                // Count occurrences of each color
                 const colorMap: { [key: string]: number } = {};
                 for (let i = 0; i < pixels.length; i += 4) {
                     const r = pixels[i];
@@ -140,7 +138,7 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
                     colorMap[colorKey] = (colorMap[colorKey] || 0) + 1;
                 }
 
-                // Find the most common color, but filter out dark colors
+                
                 let selectedColor: string | null = null;
                 let maxLightness = 0;
 
@@ -148,9 +146,9 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
                     const [r, g, b] = colorKey.split(",").map(Number);
                     const { h, s, l } = rgbToHsl(r, g, b);
 
-                    // Only consider colors in the desired HSL range (hue, saturation, and lightness)
+                  
                     if (l >= 15 && l <= 100 && s >= 0 && s <= 100) {
-                        // Adjust lightness to fit the range
+                       
                         const {l: newL } = adjustLightness(h, s, l);
 
                         if (newL > maxLightness) {
@@ -160,21 +158,20 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
                     }
                 });
                 if (selectedColor) {
-                    // @ts-ignore
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-expect-error
                     const [r, g, b] = selectedColor.split(",").map(Number);
 
-                    // Convert adjusted HSL back to RGB
                     const { h, s, l } = rgbToHsl(r, g, b);
                     const adjustedColor = hslToRgb(h, s, l);
 
                     setTextColor(adjustedColor);
                 } else {
-                    // Fallback if no valid color found
                     setTextColor("white");
                 }
             } catch (error) {
                 console.error("Error extracting color:", error);
-                setTextColor("black"); // Fallback
+                setTextColor("black"); 
             }
         };
 
@@ -184,6 +181,10 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
 
     return (
         <div className="card">
+            <div className="shadow">
+            </div>
+            <div className="inner-shadow">
+            </div>
             <img
                 ref={imgRef}
                 className="card-image"
