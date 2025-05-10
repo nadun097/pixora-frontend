@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './SignupForm.css';
 import './LoginForm.css';
 import './AuthLayout.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AuthForm: React.FC = () => {
     const [formType, setFormType] = useState<'login' | 'signup'>('login');
@@ -16,7 +18,7 @@ const AuthForm: React.FC = () => {
         email: '',
         password: '',
         confirmPassword: '',
-        termsAccepted: false,
+        termsAccepted: true,
     });
 
     const [loginData, setLoginData] = useState({
@@ -48,26 +50,95 @@ const AuthForm: React.FC = () => {
         setSignupStep(1);
     };
 
-    const handleSignupSubmit = (e: React.FormEvent) => {
+    const handleSignupSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (signupData.password !== signupData.confirmPassword) {
-            alert("Passwords do not match.");
+
+        const { firstName, lastName, contact, dob, email, password, confirmPassword } = signupData;
+
+        // Validation
+        if (password !== confirmPassword) {
+            // alert("Passwords do not match.");
+            toast.error("Passwords do not match.");
             return;
         }
+
         if (!signupData.termsAccepted) {
-            alert("Please accept the terms and privacy policy.");
+            // alert("Please accept the terms and privacy policy.");
+            toast.error("Please accept the terms and privacy policy.");
             return;
         }
-        console.log('Signup Data:', signupData);
+
+        try {
+            const payload = {
+                birthday: dob,
+                contact,
+                email,
+                first_name: firstName,
+                last_name: lastName,
+                password,
+            };
+
+            const response = await fetch('https://pixora-f96ef5c321f5.herokuapp.com/api/auth/signup/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // alert('Signup successful! You can now log in.');
+                toast.success('Signup successful! You can now log in.');
+                console.log('Signup Response:', result);
+                setFormType('login');
+            } else {
+                // alert(result.message || 'Signup failed. Please try again.');
+                toast.error(result.message || 'Signup failed. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error during signup:', error);
+            // alert('An error occurred. Please try again later.');
+            toast.error('An error occurred. Please try again later.');
+        }
     };
 
-    const handleLoginSubmit = (e: React.FormEvent) => {
+    const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Login Data:', loginData);
+
+        try {
+            const formData = new FormData();
+            formData.append('username', loginData.email);
+            formData.append('password', loginData.password);
+
+            const apiUrl = 'https://pixora-f96ef5c321f5.herokuapp.com/api/auth/login/';
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // alert('Login successful!');
+                toast.success('Login successful!');
+                console.log('Access Token:', result.access_token);
+            } else {
+                // alert(result.message || 'Invalid username or password');
+                toast.error(result.message || 'Invalid username or password');
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            // alert('An error occurred. Please try again later.');
+            toast.error('An error occurred. Please try again later.');
+        }
     };
 
     return (
         <div className="auth-form-container">
+            <ToastContainer theme="dark" />
             <div className="auth-overlay">
                 <div className="auth-box">
                     {formType === 'signup' ? (
