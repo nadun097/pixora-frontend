@@ -4,6 +4,25 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box; /* Ensures padding is included in the container's dimensions */
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    animation: popupFadeIn 0.4s ease-out;
+}
+
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 

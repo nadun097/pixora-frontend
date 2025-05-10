@@ -1,6 +1,6 @@
 import styles from "./NavBar.module.css";
 
-function NavBar() {
+function NavBar({ onLoginClick }: { onLoginClick: () => void }) {
     return (
         <div className={styles.NavBar}>
             <img src="src/assets/images/pixoraLogo.png" className={styles.pixoraIcon}/>
@@ -11,7 +11,7 @@ function NavBar() {
                 <div className={styles.NavButton}>Digital Arts</div>
                 <div className={styles.NavButton}>Photographs</div>
             </div>
-            <button className={styles.loginButton}>
+            <button className={styles.loginButton} onClick={onLoginClick}>
                 <div className={styles.textWrapper}>Login</div>
             </button>
         </div>
