@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+
+.signup-title {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(24px, 2.8vw, 32px);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.signup-subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: clamp(13px, 1.4vw, 16px);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.input-box {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.signup-input {
+    background-color: rgba(217, 217, 217, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.07);
+    border-radius: 25px;
+    width: 320px;
+    margin: 0 auto;
+    display: block;
+    height: 46px;
+    padding: 0 18px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.signup-input.half {
+    width: 100%;
+}
+
+.signup-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.signup-input::placeholder {
+    color: rgba(255, 255, 255, 0.47);
+    font-weight: 600;
+}
+
+.signup-button {
+    background: linear-gradient(180deg, #fff 0%, #999 100%);
+    border: 2px solid rgba(125, 125, 125, 0.88);
+    border-radius: 30px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.signup-button span {
+    font-size: 22px;
+    color: #444;
+}
+
+.signup-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(255, 255, 255, 0.25);
+}
+
+.signup-button.register span {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.terms-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px auto;
+    padding: 15px;
+    text-align: center;
+}
+
+
+.terms-container label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+}
+
+.signin-prompt {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.signin-link {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.signin-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.back-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.back-button-circle {
+    background: linear-gradient(180deg, #fff 0%, #999 100%);
+    border: 2px solid rgba(125, 125, 125, 0.88);
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button-circle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(255, 255, 255, 0.25);
+}
+
+.back-button-circle span {
+    color: #444;
+    font-size: 22px;
+}
+
+.back-button-text {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+
+/* Add this to your SignupForm.css */
+.next-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.next-button {
+    background: linear-gradient(180deg, #fff 0%, #999 100%);
+    border: 2px solid rgba(125, 125, 125, 0.88);
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(255, 255, 255, 0.25);
+}
+
+
+.date-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.date-input-wrapper {
+    flex-grow: 1;
+}
+
+.next-button-inline {
+    background: linear-gradient(180deg, #fff 0%, #999 100%);
+    border: 2px solid rgba(125, 125, 125, 0.88);
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.next-button-inline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(255, 255, 255, 0.25);
+}
+
+/* Add to existing CSS */
+.date-input-custom {
+    width: 250px; /* Your custom width */
+    margin-right: 10px; /* Space between input and button */
+}
+
+/* Update the date-input-group to handle the new class */
+.date-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}

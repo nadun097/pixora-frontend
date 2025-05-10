@@ -1,0 +1,112 @@
+.auth-form-container {
+    width: 100%;max-height: 70vh; /* Limits the container's maximum height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Ensures padding is included in the container's dimensions */
+}
+
+
+/* Shared overlay background and blur */
+.auth-overlay {
+    background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(89, 89, 89, 0.3) 100%
+    );
+    backdrop-filter: blur(5px);
+    border-radius: 25px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 600px;
+    position: relative;
+    margin: 15px;
+    overflow: hidden;
+}
+
+/* Common box style for login/signup */
+.auth-box {
+    background: linear-gradient(
+            180deg,
+            rgba(169, 169, 169, 0.3) 0%,
+            rgba(0, 0, 0, 0.1) 100%
+    );
+    border-radius: 35px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 360px;
+    min-height: 450px;
+    padding: 30px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* Gradient border for the auth-box */
+.auth-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 35px;
+    padding: 2px;
+    background: linear-gradient(to bottom, white, #121212);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Responsive tweaks for layout */
+@media (min-width: 1024px) {
+    .auth-box {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+    }
+
+    .auth-overlay {
+        margin: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-overlay {
+        min-height: auto;
+        padding: 40px 20px;
+        margin: 10px;
+        backdrop-filter: blur(30px);
+    }
+
+    .auth-box {
+        padding: 30px 25px;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-form-container {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .auth-overlay {
+        margin: 0;
+        border-radius: 20px;
+    }
+
+    .auth-box {
+        padding: 30px 20px;
+        border-radius: 30px;
+    }
+}
+
+
