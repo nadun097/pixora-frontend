@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.verification-requests-list {
+    padding: 20px;
+    background-color: #272727;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.verification-request-item {
+    display: flex;
+    align-items: center;
+    background-color: #494949;
+    border-radius: 55px;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.user-details {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0; /* Allows flex items to shrink below content size */
+}
+
+.user-name {
+    font-weight: bold;
+    color: #aaa;
+    width: 150px;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-email {
+    color: #aaa;
+    text-align: left;
+    padding-left: 100px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 1;
+}
+
+.request-date {
+    color: #aaa;
+    margin-left: 0;
+    padding-left: 20px;
+    width: auto;
+    flex-shrink: 0;
+    position: relative;
+    left: -180px;
+    white-space: nowrap;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    padding-left: 20px;
+    flex-shrink: 0;
+}
+
+.approve-button, .reject-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.approve-button {
+    background-color: #bdbdbd;
+    color: white;
+}
+
+.reject-button {
+    background-color: #6a6a6a;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .user-email {
+        padding-left: 50px;
+    }
+    .request-date {
+        left: -130px;
+    }
+}
+
+@media (max-width: 992px) {
+    .user-name {
+        width: 120px;
+    }
+    .user-email {
+        padding-left: 30px;
+    }
+    .request-date {
+        left: -100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .verification-request-item {
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+    .user-details {
+        width: 100%;
+        order: 1;
+        margin-top: 10px;
+    }
+    .user-name {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .user-email {
+        padding-left: 0;
+        width: 100%;
+    }
+    .request-date {
+        position: static;
+        padding-left: 0;
+        width: 100%;
+        margin-top: 5px;
+    }
+    .action-buttons {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-picture {
+        width: 40px;
+        height: 40px;
+    }
+    .verification-requests-list {
+        padding: 10px;
+    }
+}
