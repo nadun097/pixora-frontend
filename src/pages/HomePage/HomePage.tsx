@@ -75,13 +75,13 @@ const HomePage: React.FC = () => {
         {/* Show AuthForm as a popup */}
         {isAuthFormVisible && (
             <div className="auth-popup">
-              <AuthForm />
+              <AuthForm onClose={() => setAuthFormVisible(false)} />
             </div>
         )}
-        
+
         <main>
           <div className={styles.landingPageImage}>
-            <img src={LandingBackground} alt="NFT Highlight" />
+          <img src={LandingBackground} alt="NFT Highlight" />
           </div>
 
           <section className={styles.collaboratorSection}>

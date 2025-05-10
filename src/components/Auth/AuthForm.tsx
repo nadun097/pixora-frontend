@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './SignupForm.css';
 import './LoginForm.css';
 import './AuthLayout.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AuthForm: React.FC = () => {
+const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
     const [formType, setFormType] = useState<'login' | 'signup'>('login');
     const [signupStep, setSignupStep] = useState(1);
+    const authFormRef = useRef<HTMLDivElement>(null);
 
     const [signupData, setSignupData] = useState({
         firstName: '',
@@ -25,6 +26,19 @@ const AuthForm: React.FC = () => {
         email: '',
         password: '',
     });
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (authFormRef.current && !authFormRef.current.contains(event.target as Node)) {
+                onClose?.();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [onClose]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'signup' | 'login') => {
         const { name, value, type: inputType, checked } = e.target;
@@ -57,13 +71,11 @@ const AuthForm: React.FC = () => {
 
         // Validation
         if (password !== confirmPassword) {
-            // alert("Passwords do not match.");
             toast.error("Passwords do not match.");
             return;
         }
 
         if (!signupData.termsAccepted) {
-            // alert("Please accept the terms and privacy policy.");
             toast.error("Please accept the terms and privacy policy.");
             return;
         }
@@ -89,17 +101,14 @@ const AuthForm: React.FC = () => {
             const result = await response.json();
 
             if (response.ok) {
-                // alert('Signup successful! You can now log in.');
                 toast.success('Signup successful! You can now log in.');
                 console.log('Signup Response:', result);
                 setFormType('login');
             } else {
-                // alert(result.message || 'Signup failed. Please try again.');
                 toast.error(result.message || 'Signup failed. Please try again.');
             }
         } catch (error) {
             console.error('Error during signup:', error);
-            // alert('An error occurred. Please try again later.');
             toast.error('An error occurred. Please try again later.');
         }
     };
@@ -122,16 +131,13 @@ const AuthForm: React.FC = () => {
             const result = await response.json();
 
             if (response.ok) {
-                // alert('Login successful!');
                 toast.success('Login successful!');
                 console.log('Access Token:', result.access_token);
             } else {
-                // alert(result.message || 'Invalid username or password');
                 toast.error(result.message || 'Invalid username or password');
             }
         } catch (error) {
             console.error('Error during login:', error);
-            // alert('An error occurred. Please try again later.');
             toast.error('An error occurred. Please try again later.');
         }
     };
@@ -139,7 +145,7 @@ const AuthForm: React.FC = () => {
     return (
         <div className="auth-form-container">
             <ToastContainer theme="dark" />
-            <div className="auth-overlay">
+            <div className="auth-overlay" ref={authFormRef}>
                 <div className="auth-box">
                     {formType === 'signup' ? (
                         <>
