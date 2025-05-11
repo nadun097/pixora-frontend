@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './SignupForm.css';
 import './LoginForm.css';
 import './AuthLayout.css';
+import './ToastContainer.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -69,7 +70,7 @@ const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
         const { firstName, lastName, contact, dob, email, password, confirmPassword } = signupData;
 
-        // Validation
+        
         if (password !== confirmPassword) {
             toast.error("Passwords do not match.");
             return;
@@ -144,7 +145,10 @@ const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
     return (
         <div className="auth-form-container">
-            <ToastContainer theme="dark" />
+             <div className="ToastContainer">
+                <ToastContainer theme="dark" />
+             </div>
+            
             <div className="auth-overlay" ref={authFormRef}>
                 <div className="auth-box">
                     {formType === 'signup' ? (
