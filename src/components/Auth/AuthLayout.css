@@ -1,10 +1,10 @@
 .auth-form-container {
-    width: 80%;
-    max-height: 70vh; /* Limits the container's maximum height */
+    width: 100%;
+    max-height: Auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box; /* Ensures padding is included in the container's dimensions */
+    box-sizing: border-box; 
     position: fixed;
     z-index: 100;
     top: 50%;
@@ -35,7 +35,7 @@
             rgba(0, 0, 0, 0.1) 0%,
             rgba(89, 89, 89, 0.3) 100%
     );
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     border-radius: 25px;
     width: 100%;
     max-width: 1200px;
@@ -49,8 +49,8 @@
 .auth-box {
     background: linear-gradient(
             180deg,
-            rgba(169, 169, 169, 0.3) 0%,
-            rgba(0, 0, 0, 0.1) 100%
+            rgba(169, 169, 169, 0.5) 0%,
+            rgba(15, 15, 15, 0.5) 100%
     );
     border-radius: 35px;
     box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
@@ -75,12 +75,13 @@
     bottom: 0;
     border-radius: 35px;
     padding: 2px;
-    background: linear-gradient(to bottom, white, #121212);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    background: linear-gradient(to bottom, rgb(177, 177, 177), #1b1b1b);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#ffffff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
     z-index: -1;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Added drop shadow */
 }
 
 /* Responsive tweaks for layout */
