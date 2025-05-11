@@ -32,7 +32,7 @@
 .auth-overlay {
     background: linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.4) 0%,
             rgba(89, 89, 89, 0.3) 100%
     );
     backdrop-filter: blur(10px);
@@ -63,6 +63,7 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
+        box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.7); 
 }
 
 /* Gradient border for the auth-box */
@@ -75,13 +76,13 @@
     bottom: 0;
     border-radius: 35px;
     padding: 2px;
-    background: linear-gradient(to bottom, rgb(177, 177, 177), #1b1b1b);
+    background: linear-gradient(to  right bottom, rgb(202, 202, 202), #131313);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#ffffff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
     z-index: -1;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Added drop shadow */
+
 }
 
 /* Responsive tweaks for layout */
