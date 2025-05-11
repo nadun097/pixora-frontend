@@ -11,9 +11,9 @@ function NavBar({ onLoginClick }: { onLoginClick: () => void }) {
                 <div className={styles.NavButton}>Digital Arts</div>
                 <div className={styles.NavButton}>Photographs</div>
             </div>
-             <button className={styles.loginButton} onClick={onLoginClick}>
+             {/* <button className={styles.loginButton} onClick={onLoginClick}>
                 <div className={styles.textWrapper}>Login</div>
-            </button> 
+            </button>  */}
              <button onClick={onLoginClick}>
             <img src="src/assets/images/pixoraLogo.png" className={styles.profileIcon}/>
                
