@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import './SignupForm.css';
 import './LoginForm.css';
 import './AuthLayout.css';
-import './ToastContainer.css';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
+const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess?: () => void }> = ({ onClose, onLoginSuccess }) => {
     const [formType, setFormType] = useState<'login' | 'signup'>('login');
     const [signupStep, setSignupStep] = useState(1);
     const authFormRef = useRef<HTMLDivElement>(null);
@@ -70,14 +70,15 @@ const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
         const { firstName, lastName, contact, dob, email, password, confirmPassword } = signupData;
 
-        
         if (password !== confirmPassword) {
-            toast.error("Passwords do not match.");
+            
+            setAlert("Passwords do not match.");
             return;
         }
 
         if (!signupData.termsAccepted) {
-            toast.error("Please accept the terms and privacy policy.");
+           
+            setAlert("Please accept the terms and privacy policy.");
             return;
         }
 
@@ -102,14 +103,17 @@ const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
             const result = await response.json();
 
             if (response.ok) {
-                toast.success('Signup successful! You can now log in.');
+               
+                 setAlert("Signup successful! You can now log in.");
                 console.log('Signup Response:', result);
                 setFormType('login');
             } else {
+                setAlert("Signup failed. Please try again.");
                 toast.error(result.message || 'Signup failed. Please try again.');
             }
         } catch (error) {
             console.error('Error during signup:', error);
+            setAlert('An error occurred. Please try again later.');
             toast.error('An error occurred. Please try again later.');
         }
     };
@@ -134,20 +138,24 @@ const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
             if (response.ok) {
                 toast.success('Login successful!');
                 console.log('Access Token:', result.access_token);
+                setAlert('Login successful!');
+                setIsLoggedIn(true); 
+                onLoginSuccess?.(); 
             } else {
+                setAlert('Invalid username or password!');
                 toast.error(result.message || 'Invalid username or password');
             }
         } catch (error) {
+            
             console.error('Error during login:', error);
             toast.error('An error occurred. Please try again later.');
+            setAlert('An error occurred. Please try again later.');
         }
     };
 
     return (
         <div className="auth-form-container">
-             <div className="ToastContainer">
-                <ToastContainer theme="dark" />
-             </div>
+             
             
             <div className="auth-overlay" ref={authFormRef}>
                 <div className="auth-box">
@@ -346,3 +354,10 @@ const AuthForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 };
 
 export default AuthForm;
+
+function setIsLoggedIn(isLoggedIn: boolean) { 
+    console.log(`User login status updated: ${isLoggedIn}`);
+}
+function setAlert(alert: string) { 
+    console.log(`Alert: ${alert}`);
+}
