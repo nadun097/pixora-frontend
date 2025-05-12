@@ -20,8 +20,24 @@ import img3 from "../../assets/images/img3.png";
 import img4 from "../../assets/images/img4.png";
 import img5 from "../../assets/images/img5.jpg";
 
+
+
+
+
+
 const HomePage: React.FC = () => {
 
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showAuth, setShowAuth] = useState(false);
+
+    const handleLoginClick = () => {
+        setShowAuth(true);
+    };
+  const handleLoginSuccess = () => {
+        setIsLoggedIn(true);
+        setShowAuth(false);
+    };
   // LoginForm User state
   const [isAuthFormVisible, setAuthFormVisible] = useState(false);
 
@@ -70,7 +86,12 @@ const HomePage: React.FC = () => {
 
   return (
       <>
-        <NavBar  onLoginClick={toggleAuthForm}/>
+         <>
+            <NavBar isLoggedIn={isLoggedIn} onLoginClick={handleLoginClick} />
+            {showAuth && (
+                <AuthForm onClose={() => setShowAuth(false)} onLoginSuccess={handleLoginSuccess} />
+            )}
+        </>
 
         {/* Show AuthForm as a popup */}
         {isAuthFormVisible && (
