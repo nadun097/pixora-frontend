@@ -72,13 +72,13 @@ const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess?: () => void }> 
 
         if (password !== confirmPassword) {
             
-            setAlert("Passwords do not match.");
+          
             return;
         }
 
         if (!signupData.termsAccepted) {
            
-            setAlert("Please accept the terms and privacy policy.");
+           
             return;
         }
 
@@ -104,16 +104,15 @@ const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess?: () => void }> 
 
             if (response.ok) {
                
-                 setAlert("Signup successful! You can now log in.");
+               
                 console.log('Signup Response:', result);
                 setFormType('login');
             } else {
-                setAlert("Signup failed. Please try again.");
+               
                 toast.error(result.message || 'Signup failed. Please try again.');
             }
         } catch (error) {
-            console.error('Error during signup:', error);
-            setAlert('An error occurred. Please try again later.');
+            console.error('Error during signup:', error);        
             toast.error('An error occurred. Please try again later.');
         }
     };
@@ -138,18 +137,17 @@ const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess?: () => void }> 
             if (response.ok) {
                 toast.success('Login successful!');
                 console.log('Access Token:', result.access_token);
-                setAlert('Login successful!');
                 setIsLoggedIn(true); 
                 onLoginSuccess?.(); 
             } else {
-                setAlert('Invalid username or password!');
+                
                 toast.error(result.message || 'Invalid username or password');
             }
         } catch (error) {
             
             console.error('Error during login:', error);
             toast.error('An error occurred. Please try again later.');
-            setAlert('An error occurred. Please try again later.');
+            
         }
     };
 
@@ -357,7 +355,4 @@ export default AuthForm;
 
 function setIsLoggedIn(isLoggedIn: boolean) { 
     console.log(`User login status updated: ${isLoggedIn}`);
-}
-function setAlert(alert: string) { 
-    console.log(`Alert: ${alert}`);
 }
