@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Card from "../../components/Card/Card";
-import './NftCollection.css';
+import './DigitalArtsCollection.css';
 //import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
