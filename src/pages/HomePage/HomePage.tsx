@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './HomePage.module.css';
-import NavBar from '../../components/NavBar/NavBar';
+//import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import Sponsored_2 from '../../assets/images/Sponsored_2.png';
 import Sponsored_1 from '../../assets/images/Sponsered_1.png';
@@ -12,40 +12,13 @@ import LandingBackground from '../../assets/images/LandingBackground.png';
 import Card from "../../components/Card/CardHome";
 import DecorCard from "../../components/Card/DecorCard";
 
-import AuthForm from '../../components/Auth/AuthForm';
-
 import img1 from "../../assets/images/img1.jpg";
 import img2 from "../../assets/images/img2.png";
 import img3 from "../../assets/images/img3.png";
 import img4 from "../../assets/images/img4.png";
 import img5 from "../../assets/images/img5.jpg";
 
-
-
-
-
-
 const HomePage: React.FC = () => {
-
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [showAuth, setShowAuth] = useState(false);
-
-    const handleLoginClick = () => {
-        setShowAuth(true);
-    };
-  const handleLoginSuccess = () => {
-        setIsLoggedIn(true);
-        setShowAuth(false);
-    };
-  
-  const [isAuthFormVisible, setAuthFormVisible] = useState(false);
-
-  const toggleAuthForm = () => {
-    setAuthFormVisible((prev) => !prev);
-  };
-  
-  
   React.useEffect(() => {
     function animateCountUp(el: HTMLElement) {
       const target = +el.getAttribute('data-target')!;
@@ -86,23 +59,10 @@ const HomePage: React.FC = () => {
 
   return (
       <>
-         <>
-            <NavBar isLoggedIn={isLoggedIn} onLoginClick={handleLoginClick} />
-            {showAuth && (
-                <AuthForm onClose={() => setShowAuth(false)} onLoginSuccess={handleLoginSuccess} />
-            )}
-        </>
-
-       
-        {isAuthFormVisible && (
-            <div className="auth-popup">
-              <AuthForm onClose={() => setAuthFormVisible(false)} />
-            </div>
-        )}
-
+        
         <main>
           <div className={styles.landingPageImage}>
-          <img src={LandingBackground} alt="NFT Highlight" />
+            <img src={LandingBackground} alt="NFT Highlight" />
           </div>
 
           <section className={styles.collaboratorSection}>
