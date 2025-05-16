@@ -72,7 +72,7 @@ const CollectionPage = () => {
   return (
     <>
       <div className="page-container">
-        <NavBar />
+        
         <aside className="sidebar">
           <input
             type="text"

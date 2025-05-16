@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
         setIsLoggedIn(true);
         setShowAuth(false);
     };
-  // LoginForm User state
+  
   const [isAuthFormVisible, setAuthFormVisible] = useState(false);
 
   const toggleAuthForm = () => {
@@ -93,7 +93,7 @@ const HomePage: React.FC = () => {
             )}
         </>
 
-        {/* Show AuthForm as a popup */}
+       
         {isAuthFormVisible && (
             <div className="auth-popup">
               <AuthForm onClose={() => setAuthFormVisible(false)} />
