@@ -30,6 +30,9 @@ function NavBar({ onLoginClick, isLoggedIn }: NavBarProps) {
    const handleDigitalArtsClick = () => {
     window.location.href = "/digitalatrs";
   };
+  const handlePhotographsClick = () => {
+    window.location.href = "/photographs";
+  };
   return (
     <div className={styles.NavBar}>
       <img src="src/assets/images/pixoraLogo.png" className={styles.pixoraIcon} alt="Pixora Logo" />
@@ -38,7 +41,7 @@ function NavBar({ onLoginClick, isLoggedIn }: NavBarProps) {
         <div className={styles.NavButton} onClick={handleMarketplaceClick}>Marketplace</div>
         <div className={styles.NavButton}>Live Auctions</div>
         <div className={styles.NavButton} onClick={handleDigitalArtsClick}>Digital Arts</div>
-        <div className={styles.NavButton}>Photographs</div>
+        <div className={styles.NavButton} onClick={handlePhotographsClick}>Photographs</div>
       </div>
       {!isLoggedIn ? (
         <div className={styles.profileContainer}>
