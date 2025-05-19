@@ -8,6 +8,7 @@ type NavBarProps = {
     onLogout: () => void;
 };
 
+
 function NavBar({ onLoginClick, isLoggedIn, onLogout }: NavBarProps) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -42,6 +43,7 @@ function NavBar({ onLoginClick, isLoggedIn, onLogout }: NavBarProps) {
                     )}
                 </div>
             )}
+
         </div>
     );
 }

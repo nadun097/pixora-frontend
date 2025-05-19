@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Marketplace from "./pages/CollectionsPage/NftCollection";
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
+
 import DigitalArts from "./pages/DigitalArtsPage/DigitalArtsCollection";
 import AuthForm from "./components/Auth/AuthForm";
 
@@ -49,6 +50,8 @@ function App() {
             <Alert />
         </Router>
     );
+
+
 }
 
 export default App;
