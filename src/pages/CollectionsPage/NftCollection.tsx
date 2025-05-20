@@ -3,6 +3,7 @@ import Card from "../../components/Card/Card";
 import styles from './NftCollection.module.css';
 import Footer from '../../components/Footer/Footer';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 import img1 from "../../assets/images/img1.jpg";
 import img2 from "../../assets/images/img2.png";
@@ -12,55 +13,66 @@ import img5 from "../../assets/images/img5.jpg";
 import img6 from "../../assets/images/img3.png";
 
 const mockData = [
-  { title: 'Rufia 043', image: img1, price: '0.1 ETH', endDate: '21/03/24' },
-  { title: 'Rufia 044', image: img2, price: '0.1 ETH', endDate: '22/03/24' },
-  { title: 'Rufia 045', image: img3, price: '0.1 ETH', endDate: '23/03/24' },
-  { title: 'Rufia 046', image: img4, price: '0.1 ETH', endDate: '24/03/24' },
-  { title: 'Rufia 047', image: img5, price: '0.1 ETH', endDate: '25/03/24' },
-  { title: 'Rufia 048', image: img6, price: '0.1 ETH', endDate: '26/03/24' },
+  { id: 41, title: 'Rufia 043', image: img1, price: '0.1 ETH', endDate: '21/03/24' },
+  { id: 42, title: 'Rufia 044', image: img2, price: '0.1 ETH', endDate: '22/03/24' },
+  { id: 43, title: 'Rufia 045', image: img3, price: '0.1 ETH', endDate: '23/03/24' },
+  { id: 44, title: 'Rufia 046', image: img4, price: '0.1 ETH', endDate: '24/03/24' },
+  { id: 45, title: 'Rufia 047', image: img5, price: '0.1 ETH', endDate: '25/03/24' },
+  { id: 46, title: 'Rufia 048', image: img6, price: '0.1 ETH', endDate: '26/03/24' },
+  { id: 47, title: 'Rufia 049', image: img1, price: '0.1 ETH', endDate: '27/03/24' },
+  { id: 48, title: 'Rufia 050', image: img2, price: '0.1 ETH', endDate: '28/03/24' },
+  { id: 49, title: 'Rufia 043', image: img1, price: '0.1 ETH', endDate: '21/03/24' },
 ];
 
-const Section = ({ title, cards }: { title: string, cards: typeof mockData }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const scrollAmount = 1650;
+const CollectionPage = () => {
+  const navigate = useNavigate();
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const amount = direction === 'left' ? -scrollAmount : scrollAmount;
-      scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
-    }
+  const handleCardClick = (id: number, textColor: string) => {
+    navigate(`/nft/${id}`, { state: { textColor } });
   };
 
-  return (
-    <div className={styles.section}>
-      <h2 className={styles['section-title']}>{title}</h2>
-      <div className={styles['carousel-container']}>
-        <button className={`${styles['scroll-button']} ${styles.left}`} onClick={() => scroll('left')}>
-          <ChevronLeft size={24} />
-        </button>
+  const Section = ({ title, cards }: { title: string, cards: typeof mockData }) => {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const scrollAmount = 1650;
 
-        <div className={styles['cards-scroll']} ref={scrollRef}>
-          {cards.map((item, index) => (
-            <div className={styles['card-wrapper']} key={`${title}-${index}`}>
-              <Card
-                title={item.title}
-                image={item.image}
-                price={item.price}
-                description="Current Bid"
-              />
-            </div>
-          ))}
+    const scroll = (direction: 'left' | 'right') => {
+      if (scrollRef.current) {
+        const amount = direction === 'left' ? -scrollAmount : scrollAmount;
+        scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+      }
+    };
+
+    return (
+      <div className={styles.section}>
+        <h2 className={styles['section-title']}>{title}</h2>
+        <div className={styles['carousel-container']}>
+          <button className={`${styles['scroll-button']} ${styles.left}`} onClick={() => scroll('left')}>
+            <ChevronLeft size={24} />
+          </button>
+
+          <div className={styles['cards-scroll']} ref={scrollRef}>
+            {cards.map((item, index) => (
+              <div className={styles['card-wrapper']} key={`${title}-${index}`}>
+                <Card
+                  id={item.id}
+                  title={item.title}
+                  image={item.image}
+                  price={item.price}
+                  description="Current Bid"
+                  onCardClick={handleCardClick}
+                />
+              </div>
+            ))}
+          </div>
+
+          <button className={`${styles['scroll-button']} ${styles.right}`} onClick={() => scroll('right')}>
+            <ChevronRight size={24} />
+          </button>
         </div>
-
-        <button className={`${styles['scroll-button']} ${styles.right}`} onClick={() => scroll('right')}>
-          <ChevronRight size={24} />
-        </button>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
-const CollectionPage = () => {
   return (
     <>
       <div className={styles['page-container']}>
@@ -81,7 +93,7 @@ const CollectionPage = () => {
         </aside>
 
         <main className={styles['main-contents']}>
-         <Section title="Hot NFTs"cards={mockData} />
+          <Section title="Hot NFTs" cards={mockData} />
           <Section title="New Listings" cards={mockData} />
           <Section title="Ending Soon" cards={mockData} />
 

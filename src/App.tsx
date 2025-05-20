@@ -5,12 +5,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Marketplace from "./pages/CollectionsPage/NftCollection";
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
-
+import Photographs from "./pages/PhotographsCollection/PhotographsCollection.tsx";
+//import LiveAuction from "./pages/NftDataView/.tsx";
 import DigitalArts from "./pages/DigitalArtsPage/DigitalArtsCollection";
 import AuthForm from "./components/Auth/AuthForm";
+import NftDataView from './pages/NftDataView/NftDataView';
+
 
 function App() {
-    // Store token in localStorage for persistence
+    
     const [accessToken, setAccessToken] = useState<string | null>(
         () => localStorage.getItem('access_token')
     );
@@ -45,7 +48,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/marketplace" element={<Marketplace />} />
-                <Route path="/digitalatrs" element={<DigitalArts />} />
+                {/* <Route path="/liveauction" element={<LiveAuction />} /> */}
+                <Route path="/digitalarts" element={<DigitalArts />} />
+                <Route path="/photographs" element={<Photographs />} />
+                <Route path="/nft/:id" element={<NftDataView />} />
             </Routes>
             <Alert />
         </Router>

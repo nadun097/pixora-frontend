@@ -2,24 +2,15 @@ import React, { useEffect, useState, useRef } from "react";
 import "./Card.css";
 
 interface CardProps {
+    id: number;
     image: string;
     title: string;
     description: string;
     price: string;
+    onCardClick?: (id: number, textColor: string) => void;
 }
 
-{/* Include Card Component */ }
-//  <div className="home-container">
-//  <Card 
-//      image={img1} 
-//      title="Artwork" 
-//      description="CURRENT BID."
-//      line ="________________________________________" 
-//      price ="ETH 0.067"
-//  />
-// </div>
-
-const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
+const Card: React.FC<CardProps> = ({ id, image, title, description, price, onCardClick }) => {
     const [textColor, setTextColor] = useState<string>("white");
     const imgRef = useRef<HTMLImageElement>(null);
 
@@ -179,12 +170,16 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
         return () => imgElement.removeEventListener("load", handleImageLoad);
     }, [image]);
 
+    const handleClick = () => {
+        if (onCardClick) {
+            onCardClick(id, textColor);
+        }
+    };
+
     return (
-        <div className="card">
-            <div className="shadow">
-            </div>
-            <div className="inner-shadow">
-            </div>
+        <div className="card" onClick={handleClick} style={{ cursor: "pointer" }}>
+            <div className="shadow"></div>
+            <div className="inner-shadow"></div>
             <img
                 ref={imgRef}
                 className="card-image"
@@ -197,7 +192,6 @@ const Card: React.FC<CardProps> = ({ image, title, description, price }) => {
                 <p className="line">________________________________________</p>
                 <p className="card-description">{description}</p>
                 <p className="priceCard">{price}</p>
-                <button className="card-button"></button>
             </div>
         </div>
     );
