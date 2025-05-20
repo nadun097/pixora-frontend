@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./DecorCard.css";
 
 import img1 from "../../assets/images/img1.jpg";

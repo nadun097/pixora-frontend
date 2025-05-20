@@ -23,7 +23,11 @@ function NavBar({ onLoginClick, isLoggedIn, onLogout }: NavBarProps) {
             <div className={styles.NavBarButtons}>
                 <div className={styles.NavButton} onClick={() => navigate("/")}>Home</div>
                 <div className={styles.NavButton} onClick={() => navigate("/marketplace")}>Marketplace</div>
-                <div className={styles.NavButton} onClick={() => navigate("/liveauctions")}>Live Auctions</div>
+
+         
+
+                <div className={styles.NavButton} onClick={() => navigate("/liveauction")}>Live Auctions</div>
+
                 <div className={styles.NavButton} onClick={() => navigate("/digitalarts")}>Digital Arts</div>
                 <div className={styles.NavButton} onClick={() => navigate("/photographs")}>Photographs</div>
             </div>
@@ -46,4 +50,4 @@ function NavBar({ onLoginClick, isLoggedIn, onLogout }: NavBarProps) {
     );
 }
 
-export default NavBar;
+export default NavBar;

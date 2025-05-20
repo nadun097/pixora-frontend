@@ -13,8 +13,12 @@ const UserIconDropdown: React.FC<{ onClose: () => void; onLogout: () => void }> 
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (!(event.target as HTMLElement).closest('.dropdown-menu')) {
+            if ((event.target as HTMLElement).closest('.dropdown-menu')) {
                 handleClose();
+                 const dropdownElement = document.querySelector('.dropdown-menu');
+        if (dropdownElement && !dropdownElement.contains(event.target as Node)) {
+            handleClose();
+        }
             }
         };
         document.addEventListener('mousedown', handleClickOutside);

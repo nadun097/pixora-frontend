@@ -8,7 +8,14 @@ export const showAlert = (message: string, type: 'success' | 'error' = 'success'
 };
 
 const Alert = () => {
-    return <ToastContainer theme="dark" style={{ paddingTop: '80px' }} />;
+    return (
+        <ToastContainer
+            theme="dark"
+            position="bottom-right"
+            style={{ bottom: '50px' }}
+            autoClose={2000}
+        />
+    );
 };
 
 export default Alert;
