@@ -1,53 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './VerificationRequests.css';
 
 interface Request {
-    id: number;
+    id: string;
     name: string;
     email: string;
     date: string;
     profilePicture: string;
+    address: string;
+    idFrontImage: string;
+    idBackImage: string;
+    aboutUserArticleLink: string;
 }
 
 interface VerificationRequestsListProps {
     requests: Request[];
-    onApprove: (id: number) => void;
-    onReject: (id: number) => void;
+    onApprove: (id: string) => void;
+    onReject: (id: string) => void;
 }
 
 interface VerificationRequestItemProps {
-    name: string;
-    email: string;
-    date: string;
-    profilePicture: string;
+    request: Request;
     onApprove: () => void;
     onReject: () => void;
 }
 
 const VerificationRequestItem: React.FC<VerificationRequestItemProps> = ({
-                                                                             name,
-                                                                             email,
-                                                                             date,
-                                                                             profilePicture,
+                                                                             request,
                                                                              onApprove,
                                                                              onReject,
                                                                          }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
     return (
         <div className="verification-request-item">
-            <img src={profilePicture} alt={`${name}'s profile`} className="profile-picture" />
-            <div className="user-details">
-                <p className="user-name">{name}</p>
-                <p className="user-email">{email}</p>
+            <div className="request-summary" onClick={() => setIsExpanded(!isExpanded)}>
+                <img src={request.profilePicture} alt={`${request.name}'s profile`} className="profile-picture" />
+                <div className="user-details">
+                    <p className="user-name">{request.name}</p>
+                    <p className="user-email">{request.email}</p>
+                </div>
+                <p className="request-date">{request.date}</p>
+                <div className="action-buttons">
+                    <button className="approve-button" onClick={onApprove}>
+                        ✓
+                    </button>
+                    <button className="reject-button" onClick={onReject}>
+                        ✕
+                    </button>
+                </div>
             </div>
-            <p className="request-date">{date}</p>
-            <div className="action-buttons">
-                <button className="approve-button" onClick={onApprove}>
-                    ✓
-                </button>
-                <button className="reject-button" onClick={onReject}>
-                    ✕
-                </button>
-            </div>
+            {isExpanded && (
+                <div className="request-details">
+                    <p><strong>Address:</strong> {request.address}</p>
+                    <p><strong>ID Front Image:</strong></p>
+                    <img src={`data:image/jpeg;base64,${request.idFrontImage}`} alt="ID Front" className="id-image" />
+                    <p><strong>ID Back Image:</strong></p>
+                    <img src={`data:image/jpeg;base64,${request.idBackImage}`} alt="ID Back" className="id-image" />
+                    <p><strong>About User:</strong> <a href={request.aboutUserArticleLink} target="_blank" rel="noopener noreferrer">View Article</a></p>
+                </div>
+            )}
         </div>
     );
 };
@@ -62,10 +74,7 @@ const VerificationRequestsList: React.FC<VerificationRequestsListProps> = ({
             {requests.map((request) => (
                 <VerificationRequestItem
                     key={request.id}
-                    name={request.name}
-                    email={request.email}
-                    date={request.date}
-                    profilePicture={request.profilePicture}
+                    request={request}
                     onApprove={() => onApprove(request.id)}
                     onReject={() => onReject(request.id)}
                 />
