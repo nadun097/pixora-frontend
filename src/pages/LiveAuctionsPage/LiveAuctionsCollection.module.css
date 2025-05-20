@@ -1,0 +1,8 @@
+.h1 {
+    align-content: center;
+    text-align: center;
+    top: 100px;
+    position: absolute;
+    width: 100%;
+    color: white;
+}

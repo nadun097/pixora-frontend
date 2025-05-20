@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Alert from './components/Auth/Alert';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Marketplace from "./pages/CollectionsPage/NftCollection";
+import AuthForm from "./components/Auth/AuthForm";
+
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
+
 import Photographs from "./pages/PhotographsCollection/PhotographsCollection.tsx";
 //import LiveAuction from "./pages/NftDataView/.tsx";
 import DigitalArts from "./pages/DigitalArtsPage/DigitalArtsCollection";
 import AuthForm from "./components/Auth/AuthForm";
 import NftDataView from './pages/NftDataView/NftDataView';
+
 
 
 function App() {
@@ -48,10 +51,12 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/marketplace" element={<Marketplace />} />
+
                 {/* <Route path="/liveauction" element={<LiveAuction />} /> */}
                 <Route path="/digitalarts" element={<DigitalArts />} />
                 <Route path="/photographs" element={<Photographs />} />
                 <Route path="/nft/:id" element={<NftDataView />} />
+
             </Routes>
             <Alert />
         </Router>

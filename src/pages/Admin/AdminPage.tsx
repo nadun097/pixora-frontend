@@ -1,55 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from "../../components/SideBar/Sidebar";
 import VerificationRequestsList from "../../components/VerificationRequests/VerificationRequests";
 import './AdminPage.css';
 
-const AdminPage: React.FC = () => {
-    const [activeTab, setActiveTab] = useState('verification');
-    const [requests, setRequests] = useState([
-        {
-            id: 1,
-            name: 'Devon Friczy',
-            email: 'devonfriczy03@gmail.com',
-            date: '2025 MAR 1',
-            profilePicture: 'src/assets/images/img1.jpg',
-        },
-        {
-            id: 2,
-            name: 'Lisa Miyar',
-            email: 'lisakuppermiyar@gmail.com',
-            date: '2025 MAR 2',
-            profilePicture: 'src/assets/images/monkey.png',
-        },
-        {
-            id: 3,
-            name: 'Devon Friczy',
-            email: 'devonfriczy03@gmail.com',
-            date: '2025 MAR 1',
-            profilePicture: 'src/assets/images/img1.jpg',
-        },
-        {
-            id: 4,
-            name: 'Lisa Miyar',
-            email: 'lisakuppermiyar@gmail.com',
-            date: '2025 MAR 2',
-            profilePicture: 'src/assets/images/monkey.png',
-        },
-        {
-            id: 5,
-            name: 'Lisa Miyar',
-            email: 'lisakuppermiyar@gmail.com',
-            date: '2025 MAR 2',
-            profilePicture: 'src/assets/images/monkey.png',
-        }
-        // ... other requests
-    ]);
+// Define the correct interface for VerificationRequest
+interface VerificationRequest {
+    id: string; // Backend ID type is string
+    name: string;
+    email: string;
+    date: string;
+    profilePicture: string;
+    address: string;
+    idFrontImage: string;
+    idBackImage: string;
+    aboutUserArticleLink: string;
+}
 
-    const handleApprove = (id: number) => {
-        setRequests(requests.filter((request) => request.id !== id));
+const AdminPage: React.FC = () => {
+    const [activeTab, setActiveTab] = useState<string>('verification');
+    const [requests, setRequests] = useState<VerificationRequest[]>([]);
+
+    // Fetch pending requests dynamically
+    useEffect(() => {
+        const fetchPendingRequests = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/admin/pending-verification-requests');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch pending requests');
+                }
+                const data: {
+                    id: string;
+                    user_name: string;
+                    user_email: string;
+                    request_date: string;
+                    profile_image: string;
+                    address: string;
+                    id_front_image: string;
+                    id_back_image: string;
+                    about_user_article_link: string;
+                }[] = await response.json();
+
+                // Map API response to match the required structure
+                const formattedRequests: VerificationRequest[] = data.map((request) => ({
+                    id: request.id,
+                    name: request.user_name,
+                    email: request.user_email,
+                    date: new Date(request.request_date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                    }),
+                    profilePicture: `data:image/jpeg;base64,${request.profile_image}`,
+                    address: request.address,
+                    idFrontImage: request.id_front_image,
+                    idBackImage: request.id_back_image,
+                    aboutUserArticleLink: request.about_user_article_link,
+                }));
+
+                setRequests(formattedRequests);
+            } catch (error) {
+                console.error('Error fetching pending requests:', error);
+            }
+        };
+
+        fetchPendingRequests();
+    }, []);
+
+    const updateStatus = async (id: string, status: string) => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/admin/verification-requests/${id}/status?status=${status}`, {
+                method: 'PUT',
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to update status for ID ${id}`);
+            }
+
+            // Remove the updated request from the list
+            setRequests(requests.filter((request) => request.id !== id));
+        } catch (error) {
+            console.error(`Error updating status to ${status} for ID ${id}:`, error);
+        }
     };
 
-    const handleReject = (id: number) => {
-        setRequests(requests.filter((request) => request.id !== id));
+    const handleApprove = (id: string) => {
+        updateStatus(id, 'approved');
+    };
+
+    const handleReject = (id: string) => {
+        updateStatus(id, 'rejected');
     };
 
     const renderContent = () => {
