@@ -3,25 +3,30 @@ import NftImg from '../../assets/images/highlight_1.png';
 import ownerImg from '../../assets/images/sia croven.jpg';
 import { useParams, useLocation } from 'react-router-dom';
 import verificationTick from '../../assets/images/verification tick.png';
+import ownerImg from '../../assets/images/sia croven.jpg';
 
-const nftData = {
-   
-    image: NftImg,           
-    artist: 'Sia Kroven',
-    artistImg: ownerImg,    
-    globalFloor: '0012',
-    nftName: 'Azuki',
-    bidValue: '0.1 ETH',
-    owner: 'Ryan Reynolds',
-    ownerImg: ownerImg,      
-    description: `Versions of the Lorem Ipsum text have been used in typesetting at least since the 1960s,
-    when it was popularized by advertisements for Letraset transfer sheets...`
+// Default fallback data for fields not present from navigation
+const defaultData = {
+    image: "https://placehold.co/600x600",
+    nftName: "NFT Name",
+    bidValue: "0.00 ETH",
+    description: "No description available.",
+    artist: "Sia Kroven",
+    globalFloor: "0012",
+    owner: "Ryan Reynolds",
+    ownerImg: ownerImg
 };
 
 const LiveAuctionsPage = () => {
-    const { id } = useParams<{ id: string }>();
+    const { id } = useParams();
     const location = useLocation();
     const textColor = location.state?.textColor || "#fff";
+    console.log(textColor);
+    // Merge passed nft data with defaults
+    const nftData = {
+        ...defaultData,
+        ...(location.state && location.state.nft ? location.state.nft : {})
+    };
 
     return (
         <div className={styles.nftDisplay}>
@@ -34,9 +39,7 @@ const LiveAuctionsPage = () => {
                     <div>
                         <div className={styles.nftHeader}>
                             <div>
-                                {/* <h1 className={styles.nftMainHeading}>NFT Snapshot</h1> */}
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                   
                                     <h4 className={styles.nftCreator}>
                                         {nftData.artist} <span className={styles.verifiedBadge}><img src={verificationTick}  className={styles.verifiedBadge}></img></span>
                                     </h4>
@@ -45,7 +48,7 @@ const LiveAuctionsPage = () => {
                             </div>
                         </div>
                         <h1 className={styles.nftTitle}>
-                            {nftData.nftName} <span className={styles.nftNumber}>#{id }</span>
+                            {nftData.nftName} <span className={styles.nftNumber}>#{id?.toString().slice(-5)}</span>
                         </h1>
                         <div className={styles.nftOwner}>
                             <img src={nftData.ownerImg} alt="Owner DP" className={styles.ownerImage} />

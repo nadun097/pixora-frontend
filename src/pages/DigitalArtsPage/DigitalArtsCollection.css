@@ -195,6 +195,7 @@
  
 }
 .hdtittle {
+  font-family: "Inter-Black";
   font-size: 200px;
   color: aliceblue;
   z-index: 1;

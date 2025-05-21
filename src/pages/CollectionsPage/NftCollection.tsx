@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import Card from "../../components/Card/Card";
 import styles from './NftCollection.module.css';
 import Footer from '../../components/Footer/Footer';

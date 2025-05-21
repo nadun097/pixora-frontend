@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Alert from './components/Auth/Alert';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Marketplace from "./pages/CollectionsPage/NftCollection";
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
-import Photographs from "./pages/PhotographsCollection/PhotographsCollection.tsx";
 import DigitalArts from "./pages/DigitalArtsPage/DigitalArtsCollection";
 import AuthForm from "./components/Auth/AuthForm";
 import NftDataView from './pages/NftDataView/NftDataView';
 import UserAccount from './pages/UserAccount/UserAccount.tsx';
 import Photographs from "./pages/PhotographsCollection/PhotographsCollection";
-import LiveAuctions from  "./pages/LiveAuctionsPage/LiveAuctionsCollection";
 import UserDashboardPage from "./pages/UserDashboardPage/UserDashboardPage.tsx";
 
 
@@ -37,7 +35,6 @@ function App() {
 
     return (
         <Router>
-           
             {(
                 <NavBar
                     isLoggedIn={!!accessToken}
@@ -58,14 +55,11 @@ function App() {
                 <Route path="/nft/:id" element={<NftDataView />} />
                 <Route path="/userAccount" element={<UserAccount />} />
                 <Route path={"/photographs"} element={<Photographs />} />
-                <Route path={"/liveauctions"} element={<LiveAuctions />} />
                 <Route path="/dashboard" element={<UserDashboardPage />} />
             </Routes>
             <Alert />
         </Router>
     );
-
-
 }
 
 export default App;
