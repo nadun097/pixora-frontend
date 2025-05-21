@@ -1,6 +1,4 @@
 import styles from './NftDataView.module.css';
-import NftImg from '../../assets/images/highlight_1.png';
-import ownerImg from '../../assets/images/sia croven.jpg';
 import { useParams, useLocation } from 'react-router-dom';
 import verificationTick from '../../assets/images/verification tick.png';
 import ownerImg from '../../assets/images/sia croven.jpg';
@@ -65,17 +63,14 @@ const LiveAuctionsPage = () => {
                                 <span className={styles.currentBidLabel}>Current BID</span>
                                 <h3>{nftData.bidValue}</h3>
                             </div>
-                            
                         </div>
-                           
                     </div>
                  <div className={styles.buttonSection}>
-  <button className={styles.loginButton}>
-                    <div className={styles.textWrapper}>BUY NOW</div>
-                </button>
-                   </div>
+                     <button className={styles.loginButton}>
+                         <div className={styles.textWrapper}>BUY NOW</div>
+                     </button>
+                 </div>
                     <div className={styles.nftDescription} style={{ position: "relative" }}>
-                         
                         <h4>Description</h4>
                         <p>
                             {nftData.description}
