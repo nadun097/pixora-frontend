@@ -57,8 +57,8 @@ const UserIconDropdown: React.FC<{ onClose: () => void; onLogout: () => void }> 
             </div>
 
             <div className="dropdown-section">
-                <button className="dropdown-item">
-                    <span className="gray-icon"><img src="src/assets/images/application.png" alt="preview" /></span> Feature preview
+                <button className="dropdown-item"   onClick={() => {handleClose(); navigate('/dashboard');}}>
+                    <span className="gray-icon"><img src="src/assets/images/application.png" alt="preview" /></span> Dashboard
                 </button>
             </div>
 

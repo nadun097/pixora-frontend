@@ -6,11 +6,14 @@ import Marketplace from "./pages/CollectionsPage/NftCollection";
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
 import Photographs from "./pages/PhotographsCollection/PhotographsCollection.tsx";
-//import LiveAuction from "./pages/NftDataView/.tsx";
 import DigitalArts from "./pages/DigitalArtsPage/DigitalArtsCollection";
 import AuthForm from "./components/Auth/AuthForm";
 import NftDataView from './pages/NftDataView/NftDataView';
 import UserAccount from './pages/UserAccount/UserAccount.tsx';
+import Photographs from "./pages/PhotographsCollection/PhotographsCollection";
+import LiveAuctions from  "./pages/LiveAuctionsPage/LiveAuctionsCollection";
+import UserDashboardPage from "./pages/UserDashboardPage/UserDashboardPage.tsx";
+
 
 function App() {
     
@@ -51,11 +54,12 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/marketplace" element={<Marketplace />} />
-                {/* <Route path="/liveauction" element={<LiveAuction />} /> */}
                 <Route path="/digitalarts" element={<DigitalArts />} />
-                <Route path="/photographs" element={<Photographs />} />
                 <Route path="/nft/:id" element={<NftDataView />} />
                 <Route path="/userAccount" element={<UserAccount />} />
+                <Route path={"/photographs"} element={<Photographs />} />
+                <Route path={"/liveauctions"} element={<LiveAuctions />} />
+                <Route path="/dashboard" element={<UserDashboardPage />} />
             </Routes>
             <Alert />
         </Router>
