@@ -1,8 +1,8 @@
 import styles from './NftDataView.module.css';
-import NftImg from '../../assets/images/img4.png';
+import NftImg from '../../assets/images/highlight_1.png';
 import ownerImg from '../../assets/images/sia croven.jpg';
 import { useParams, useLocation } from 'react-router-dom';
-
+import verificationTick from '../../assets/images/verification tick.png';
 
 const nftData = {
    
@@ -38,7 +38,7 @@ const LiveAuctionsPage = () => {
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                    
                                     <h4 className={styles.nftCreator}>
-                                        {nftData.artist} <span className={styles.verifiedBadge}>✔</span>
+                                        {nftData.artist} <span className={styles.verifiedBadge}><img src={verificationTick}  className={styles.verifiedBadge}></img></span>
                                     </h4>
                                 </div>
                                 <p className={styles.nftFloor}>Global Floor {nftData.globalFloor}</p>
@@ -62,10 +62,17 @@ const LiveAuctionsPage = () => {
                                 <span className={styles.currentBidLabel}>Current BID</span>
                                 <h3>{nftData.bidValue}</h3>
                             </div>
+                            
                         </div>
+                           
                     </div>
-
-                    <div className={styles.nftDescription}>
+                 <div className={styles.buttonSection}>
+  <button className={styles.loginButton}>
+                    <div className={styles.textWrapper}>BUY NOW</div>
+                </button>
+                   </div>
+                    <div className={styles.nftDescription} style={{ position: "relative" }}>
+                         
                         <h4>Description</h4>
                         <p>
                             {nftData.description}

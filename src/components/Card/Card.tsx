@@ -14,7 +14,6 @@ const Card: React.FC<CardProps> = ({ id, image, title, description, price, onCar
     const [textColor, setTextColor] = useState<string>("white");
     const imgRef = useRef<HTMLImageElement>(null);
 
-    // Function to convert RGB to HSL
     const rgbToHsl = (r: number, g: number, b: number) => {
         r /= 255;
         g /= 255;
@@ -149,9 +148,8 @@ const Card: React.FC<CardProps> = ({ id, image, title, description, price, onCar
                     }
                 });
                 if (selectedColor) {
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-expect-error
-                    const [r, g, b] = selectedColor.split(",").map(Number);
+                    
+                    const [r, g, b] = (selectedColor as string).split(",").map(Number);
 
                     const { h, s, l } = rgbToHsl(r, g, b);
                     const adjustedColor = hslToRgb(h, s, l);

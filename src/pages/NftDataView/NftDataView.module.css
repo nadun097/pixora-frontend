@@ -53,13 +53,13 @@
 
 .nftDetails {
     
-    padding: 0px 0px 90px 90px;
+    padding: 50px 0px 90px 90px;
     display: flex;
     
     flex-direction: column;
     
     color: #ffffff;
-    min-width: 30px;
+    min-width: 720px;
 }
 
 .nftHeader {
@@ -79,12 +79,13 @@
 }
 
 .verifiedBadge {
-    color: #fff;
-    background: #0871f6;
+    
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     font-size: 1rem;
-    padding: 2px 4px;
-    margin-left: 5px;
+   
+    margin-left: 0px;
     vertical-align: middle;
 }
 
@@ -102,6 +103,8 @@
     line-height: 0.5;
     letter-spacing: 1px;
     font-size: 6.5rem;
+     white-space: nowrap;
+     
 }
 
 .nftNumber {
@@ -188,7 +191,7 @@
     flex: 2;
     display: flex;
     align-items: center;
-
+margin: 0px 20px 0px 0px;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.199) 0%, rgba(0, 195, 255, 0.356) 100%);
     border-radius: 10px;
     gap: 10px;
@@ -238,3 +241,44 @@
     
 }
 
+.loginButton {
+    all: unset;
+    position: relative;
+    box-sizing: border-box;
+    height: 30px;
+    width: 120px;
+margin-right: 80px;
+    border: 2px solid #7d7d7de0;
+    border-radius: 30px;
+    box-shadow: 0px 5px 15px #ffffff26;
+scale: 2;
+    background: linear-gradient(90deg, #ffffff 0%, #999 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loginButton:hover {
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.33);
+    transform: scale(1.01);
+}
+
+.textWrapper {
+   
+    color: #444444;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.buttonSection{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+   margin-right: 10px;
+    margin-top: 30px;
+}
