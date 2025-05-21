@@ -1,4 +1,5 @@
-
+.userDisplay {
+}
 
 .profileImage {
 
@@ -12,12 +13,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  object-fit: cover;
 }
 
 
 .profileimageGradiant{
-  
+ 
   position: absolute;
   z-index:-1;
   
@@ -105,15 +106,18 @@
 }
 .socialLine{
     display: flex;
-    align-items:end;
+    align-items: end;
     justify-content: end;
     right: 10px;
     margin-top: -180px;
-    
+    flex-direction: row;
+    gap: 0px;
 }
 .socialM{
     margin: 0px 20px 0px 0px;
-    
+    width: 38px;
+    height: 38px;
+    transition: width 0.2s, height 0.2s;
 }
 .userBidSection {
     display: flex;
@@ -142,10 +146,17 @@
     font-size: 1.8rem;
     color: #ffffff;
     font-weight: 200;
-    margin :10px 10px 2px 15px ;
+    margin :10px -5px 2px 15px ;
+}
+.VerifiedArtist2{
+    font-size: 1.8rem;
+    color: #ffffff00;
+    font-weight: 200;
+    margin :10px -5px 2px 15px ;
 }
 
 .userName {
+    font-family:Inter-Black;
     line-height: 100%;
     font-size: 10rem;
     font-weight: 700;
@@ -153,7 +164,10 @@
     margin: 0;
     display: flex;
     align-items: baseline;
-   
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 .ethText {
@@ -171,7 +185,7 @@
     border-radius: 10px;
     gap: 10px;
     padding: 10px 14px 10px 14px;
-    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.14);
+   
     max-width: auto;
     max-height: auto;
 }
@@ -202,7 +216,66 @@
     z-index: 2;
 }
 
+
+.cardListItem{
+    display: flex;
+  justify-content: center;
+  scale: 1.01;
+}
+
+.cardList{
+    display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1700px;
+  justify-items: center;
+}
+.listGridAria{
+    margin-top: 100px;
+    width: 100%;
+    max-width: 1700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.listGridAria h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: inline-block;
+    position: relative;
+    justify-content: flex-start;
+    text-align: left;
+    width: 100%;
+   
+    border: 0;
+    padding-bottom: 8px;
+}
+.listGridAria h2::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    margin-top: 6px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #fff 0%, #99999900 100%);
+}
+
 /* Responsive adjustments for user profile page */
+@media (max-width: 1400px) {
+    .listGridAria {
+        max-width: 1200px;
+    }
+    .cardList {
+        max-width: 1200px;
+    }
+}
+
 @media (max-width: 1200px) {
     .profileImage {
         height: 700px;
@@ -217,6 +290,12 @@
     }
     .socialLine {
         margin-top: -120px;
+    }
+    .listGridAria {
+        max-width: 900px;
+    }
+    .cardList {
+        max-width: 900px;
     }
 }
 
@@ -237,6 +316,12 @@
     }
     .socialLine {
         margin-top: -80px;
+    }
+    .listGridAria {
+        max-width: 600px;
+    }
+    .cardList {
+        max-width: 600px;
     }
 }
 
@@ -267,6 +352,66 @@
     }
     .socialLine {
         margin-top: -40px;
+        justify-content: center;
+        align-items: center;
+        gap: 0px;
+    }
+    .socialM {
+        width: 20px;
+        height: 20px;
+        margin: 0px 10px 0px 0px;
+    }
+    .listGridAria {
+        max-width: 98vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+    .cardList {
+        max-width: 98vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        grid-template-columns: 1fr;
+    }
+    .listGridAria h2 {
+        font-size: 1.5rem;
     }
 }
 
+.footer {
+    padding: 100px 0px 0px 0px;
+}
+
+.profileImage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  /* Enable text wrap if image is smaller than container */
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* For text elements that may overflow, add text wrapping */
+.userDescription p,
+.VerifiedArtist,
+.userName,
+.listGridAria h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* For multi-line ellipsis (e.g., .userDescription p), use this if you want 2 lines max: */
+.userDescription p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Change to desired number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  max-width: 100%;
+}
