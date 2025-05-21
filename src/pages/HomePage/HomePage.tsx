@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './HomePage.module.css';
-//import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import Sponsored_2 from '../../assets/images/Sponsored_2.png';
 import Sponsored_1 from '../../assets/images/Sponsered_1.png';

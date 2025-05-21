@@ -1,4 +1,3 @@
-import React from 'react';
 import Card from "../../components/Card/Card";
 import './PhotographsCollection.css';
 import Footer from '../../components/Footer/Footer';
