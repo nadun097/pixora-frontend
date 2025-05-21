@@ -1,0 +1,272 @@
+
+
+.profileImage {
+
+  position: relative;
+  width: 100vw;
+  height: 950px;
+  max-height: 900px;
+  background: #23262f;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.profileimageGradiant{
+  
+  position: absolute;
+  z-index:-1;
+  
+}
+.profileimageGradiant::after{
+     
+   content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom, 
+    rgba(0, 0, 0, 0.0) 0%, 
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  
+}
+
+
+
+
+.userDetails {
+    
+    padding: 0px 0px 90px 90px;
+    display: flex;
+    
+    flex-direction: column;
+    
+    color: #ffffff;
+   
+}
+
+.userHeader {
+    display: flex;
+   
+    gap: 12px;
+}
+
+.userCreator {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+
+.userImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 10px;
+    margin-top: 9%; 
+    display: block;
+}
+.userImageContainer{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ownerLabel {
+    font-size: 0.93rem;
+    color: #b9bbbe;
+    font-weight: 500;
+}
+
+.ownerName {
+    line-height: 80%;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+.socialLine{
+    display: flex;
+    align-items:end;
+    justify-content: end;
+    right: 10px;
+    margin-top: -180px;
+    
+}
+.socialM{
+    margin: 0px 20px 0px 0px;
+    
+}
+.userBidSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 50px 0 10px 0;
+    gap: 18px;
+}
+.textLineing{
+    display: flex;
+    flex-direction: column;
+}
+
+.VerifiedArtistLine {
+    display: flex;
+    align-items: center;
+    
+    margin-top: 1%; 
+}
+.Verified{
+ 
+    margin-left: 10px;
+}
+
+.VerifiedArtist{
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 200;
+    margin :10px 10px 2px 15px ;
+}
+
+.userName {
+    line-height: 100%;
+    font-size: 10rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+   
+}
+
+.ethText {
+    font-size: 5rem;
+    color: #b9bbbe;
+    font-weight: 500;
+}
+
+.placeBid {
+    flex: 2;
+    display: flex;
+    align-items: center;
+
+   
+    border-radius: 10px;
+    gap: 10px;
+    padding: 10px 14px 10px 14px;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.14);
+    max-width: auto;
+    max-height: auto;
+}
+
+.userDescription p {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 5px 20px 20px 20px;
+}
+
+
+.profileImage::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60%; /* Spread shadow over bottom 60% */
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: none;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.5) 60%,
+        rgba(0,0,0,0.0) 100%
+    );
+    z-index: 2;
+}
+
+/* Responsive adjustments for user profile page */
+@media (max-width: 1200px) {
+    .profileImage {
+        height: 700px;
+    }
+    .userImage,
+    .userImageContainer {
+        width: 220px;
+        height: 220px;
+    }
+    .userName {
+        font-size: 6rem;
+    }
+    .socialLine {
+        margin-top: -120px;
+    }
+}
+
+@media (max-width: 900px) {
+    .profileImage {
+        height: 500px;
+    }
+    .userImage,
+    .userImageContainer {
+        width: 160px;
+        height: 160px;
+    }
+    .userName {
+        font-size: 3.5rem;
+    }
+    .userDetails {
+        padding: 0px 0px 40px 40px;
+    }
+    .socialLine {
+        margin-top: -80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .profileImage {
+        height: 320px;
+    }
+    .userImage,
+    .userImageContainer {
+        width: 100px;
+        height: 100px;
+        margin: 40px 0 16px 0;
+        padding: 4px;
+    }
+    .userName {
+        font-size: 2rem;
+    }
+    .userDetails {
+        padding: 0px 0px 20px 10px;
+    }
+    .VerifiedArtist {
+        font-size: 1rem;
+        margin: 6px 6px 2px 8px;
+    }
+    .VerifiedArtistLine {
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .socialLine {
+        margin-top: -40px;
+    }
+}
+

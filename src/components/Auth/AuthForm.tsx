@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './SignupForm.css';
 import './LoginForm.css';
 import './AuthLayout.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import { showAlert } from './Alert';
 
 const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess: (token: string) => void }> = ({ onClose, onLoginSuccess }) => {
     const [formType, setFormType] = useState<'login' | 'signup'>('login');
@@ -65,11 +65,11 @@ const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess: (token: string)
         e.preventDefault();
         const { firstName, lastName, contact, dob, email, password, confirmPassword } = signupData;
         if (password !== confirmPassword) {
-            toast.error("Passwords do not match.");
+            showAlert("Passwords do not match.", "error");
             return;
         }
         if (!signupData.termsAccepted) {
-            toast.error("Please accept the terms and privacy policy.");
+            showAlert("Please accept the terms and privacy policy.", "error");
             return;
         }
         try {
@@ -88,13 +88,13 @@ const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess: (token: string)
             });
             const result = await response.json();
             if (response.ok) {
-                toast.success('Signup successful! You can now log in.');
+                showAlert('Signup successful! You can now log in.', "success");
                 setFormType('login');
             } else {
-                toast.error(result.message || 'Signup failed. Please try again.');
+                showAlert(result.message || 'Signup failed. Please try again.', "error");
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again later.');
+            showAlert('An error occurred. Please try again later.', "error");
         }
     };
 
@@ -112,20 +112,17 @@ const AuthForm: React.FC<{ onClose?: () => void; onLoginSuccess: (token: string)
             const result = await response.json();
             if (response.ok) {
                 onLoginSuccess(result.access_token);
-                toast.success('Login successful!');
+                showAlert('Login successful!', "success");
             } else {
-                toast.error(result.message || 'Invalid username or password');
+                showAlert(result.message || 'Invalid username or password', "error");
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again later.');
+            showAlert('An error occurred. Please try again later.', "error");
         }
     };
 
     return (
         <div className="auth-form-container">
-            <div className="ToastContainer">
-                <ToastContainer theme="dark" />
-            </div>
             <div className="auth-overlay" ref={authFormRef}>
                 <div className="auth-box">
                     {formType === 'signup' ? (

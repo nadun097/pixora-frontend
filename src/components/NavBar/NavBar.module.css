@@ -117,3 +117,27 @@ margin-right: 80px;
     letter-spacing: 0;
     line-height: normal;
 }
+
+@keyframes navGlow {
+    0% {
+        color: #9e9e9e;
+       text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        
+    }
+ 
+    100% {
+        color: #fff;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      
+    }
+}
+
+
+.activeNavButton {
+   
+    color: #fff;
+    border-radius: 8px;
+    transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+    animation: navGlow 1s infinite alternate;
+   
+}

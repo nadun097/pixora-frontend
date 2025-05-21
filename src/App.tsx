@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
 import './App.css';
 import Alert from './components/Auth/Alert';
-import AuthForm from "./components/Auth/AuthForm";
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Marketplace from "./pages/CollectionsPage/NftCollection";
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
-
-import Marketplace from "./pages/CollectionsPage/NftCollection";
+import Photographs from "./pages/PhotographsCollection/PhotographsCollection.tsx";
 import DigitalArts from "./pages/DigitalArtsPage/DigitalArtsCollection";
+import AuthForm from "./components/Auth/AuthForm";
+import NftDataView from './pages/NftDataView/NftDataView';
+import UserAccount from './pages/UserAccount/UserAccount.tsx';
 import Photographs from "./pages/PhotographsCollection/PhotographsCollection";
 import LiveAuctions from  "./pages/LiveAuctionsPage/LiveAuctionsCollection";
 import UserDashboardPage from "./pages/UserDashboardPage/UserDashboardPage.tsx";
 
 
 function App() {
-    // Store token in localStorage for persistence
+    
     const [accessToken, setAccessToken] = useState<string | null>(
         () => localStorage.getItem('access_token')
     );
@@ -36,11 +37,14 @@ function App() {
 
     return (
         <Router>
-            <NavBar
-                isLoggedIn={!!accessToken}
-                onLoginClick={handleLoginClick}
-                onLogout={handleLogout}
-            />
+           
+            {(
+                <NavBar
+                    isLoggedIn={!!accessToken}
+                    onLoginClick={handleLoginClick}
+                    onLogout={handleLogout}
+                />
+            )}
             {isAuthOpen && (
                 <AuthForm
                     onClose={() => setIsAuthOpen(false)}
@@ -51,6 +55,8 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/marketplace" element={<Marketplace />} />
                 <Route path="/digitalarts" element={<DigitalArts />} />
+                <Route path="/nft/:id" element={<NftDataView />} />
+                <Route path="/userAccount" element={<UserAccount />} />
                 <Route path={"/photographs"} element={<Photographs />} />
                 <Route path={"/liveauctions"} element={<LiveAuctions />} />
                 <Route path="/dashboard" element={<UserDashboardPage />} />

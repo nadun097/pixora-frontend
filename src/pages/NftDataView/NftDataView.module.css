@@ -1,0 +1,240 @@
+.nftDisplay {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.backgroundOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(110deg, rgba(0,0,0,0.99) 60%,
+     rgba(255, 255, 255, 0.158) 100%);
+    backdrop-filter: blur(6px);
+    z-index: 0;
+}
+
+.nftContent {
+    position: relative;
+    display: flex;
+    max-width: 1500px;
+    width: 90vw;
+    max-height: 900px;
+    overflow: hidden;
+    z-index: 1;
+ 
+}
+
+.nftImageContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 700px;
+    min-height: 750px;
+}
+
+
+.nftImage {
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    max-height: 750px;
+    object-fit: cover;
+    border-radius: 40px;
+    background: #23262f;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+}
+
+.nftDetails {
+    
+    padding: 0px 0px 90px 90px;
+    display: flex;
+    
+    flex-direction: column;
+    
+    color: #ffffff;
+    min-width: 30px;
+}
+
+.nftHeader {
+    display: flex;
+   
+    gap: 12px;
+}
+
+.nftCreator {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+.verifiedBadge {
+    color: #fff;
+    background: #0871f6;
+    border-radius: 50%;
+    font-size: 1rem;
+    padding: 2px 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.nftFloor {
+    color: #b9bbbe;
+    font-size: 0.93rem;
+    margin-top: 2px;
+}
+
+.nftTitle {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 10px 0 80px 0;
+    color: #fff;
+    line-height: 0.5;
+    letter-spacing: 1px;
+    font-size: 6.5rem;
+}
+
+.nftNumber {
+    font-size: 4rem;
+    color: #a5a5a5;
+    font-weight: 600;
+}
+
+.nftOwner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.ownerImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+    background: #23262f;
+    padding: 2px;
+    margin: 10px 0 0px 5px;
+}
+
+.ownerLabel {
+    font-size: 0.93rem;
+    color: #b9bbbe;
+    font-weight: 500;
+}
+
+.ownerName {
+    line-height: 80%;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.nftBidSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 26px 0 10px 0;
+    gap: 18px;
+}
+.textLineing{
+    display: flex;
+    flex-direction: column;
+}
+
+.currentBid {
+    flex: 1;
+    text-align: left;
+}
+
+.currentBidLabel {
+    line-height: 100%;
+    font-size: 2rem;
+    color: #b9bbbe;
+    font-weight: 500;
+    
+}
+
+.currentBid h3 {
+    line-height: 100%;
+    font-size: 6rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+   
+}
+
+.ethText {
+    font-size: 5rem;
+    color: #b9bbbe;
+    font-weight: 500;
+}
+
+.placeBid {
+    flex: 2;
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.199) 0%, rgba(0, 195, 255, 0.356) 100%);
+    border-radius: 10px;
+    gap: 10px;
+    padding: 10px 14px 10px 14px;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.14);
+    max-width: auto;
+    max-height: auto;
+}
+
+
+.nftDescription {
+    margin-top: 28px;
+    border-top: 3px solid;
+    border-image: linear-gradient(90deg, #ffffff 0%, #00000000 100%);
+    border-image-slice: 1;
+    padding-bottom: 18px;
+}
+
+.nftDescription h4 {
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #fff;
+    font-size: 1.13rem;
+}
+
+.nftDescription p {
+    font-size: 1.03rem;
+    color: #ffffff;
+    margin-top: 4px;
+}
+
+
+.backgroundImage {
+  
+    width: 100%;
+    height: auto;
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    display: block;
+    object-fit: contain;
+    opacity: 0.15;
+    filter: blur(12px);
+    
+}
+

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./NavBar.module.css";
 import UserIconDropdown from "../DropDown/UserIcondd";
-import {useNavigate} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 type NavBarProps = {
     isLoggedIn: boolean;
@@ -12,7 +12,27 @@ type NavBarProps = {
 
 function NavBar({ onLoginClick, isLoggedIn, onLogout }: NavBarProps) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [activeButton, setActiveButton] = useState<string>("");
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const navButtons = [
+        { label: "Home", path: "/" },
+        { label: "Marketplace", path: "/marketplace" },
+        { label: "Live Auctions", path: "/liveauctions" },
+        { label: "Digital Arts", path: "/digitalarts" },
+        { label: "Photographs", path: "/photographs" },
+    ];
+
+    // Highlight the correct nav button based on current path, otherwise no highlight
+    useEffect(() => {
+        // Only highlight if on a known nav button path, otherwise clear highlight
+        const found = navButtons.find(btn =>
+            location.pathname === btn.path ||
+            (btn.path !== "/" && location.pathname.startsWith(btn.path))
+        );
+        setActiveButton(found ? found.label : "");
+    }, [location.pathname]);
 
     const handleDropDownClick = () => setIsDropdownOpen((prev) => !prev);
     const handleDropdownClose = () => setIsDropdownOpen(false);
@@ -21,11 +41,17 @@ function NavBar({ onLoginClick, isLoggedIn, onLogout }: NavBarProps) {
         <div className={styles.NavBar}>
             <img src="src/assets/images/pixoraLogo.png" className={styles.pixoraIcon} alt="Pixora Logo" />
             <div className={styles.NavBarButtons}>
-                <div className={styles.NavButton} onClick={() => navigate("/")}>Home</div>
-                <div className={styles.NavButton} onClick={() => navigate("/marketplace")}>Marketplace</div>
-                <div className={styles.NavButton} onClick={() => navigate("/liveauctions")}>Live Auctions</div>
-                <div className={styles.NavButton} onClick={() => navigate("/digitalarts")}>Digital Arts</div>
-                <div className={styles.NavButton} onClick={() => navigate("/photographs")}>Photographs</div>
+                {navButtons.map((btn) => (
+                    <div
+                        key={btn.label}
+                        className={`${styles.NavButton} ${activeButton === btn.label ? styles.activeNavButton : ""}`}
+                        onClick={() => {
+                            navigate(btn.path);
+                        }}
+                    >
+                        {btn.label}
+                    </div>
+                ))}
             </div>
             {!isLoggedIn ? (
                 <button className={styles.loginButton} onClick={onLoginClick}>
