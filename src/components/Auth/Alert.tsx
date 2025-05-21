@@ -13,7 +13,7 @@ const Alert = () => {
             theme="dark"
             position="bottom-right"
             style={{ bottom: '50px' }}
-            autoClose={2000}
+            autoClose={3000}
         />
     );
 };
