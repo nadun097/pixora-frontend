@@ -1,0 +1,118 @@
+/* === UserDashboardPage.css === */
+
+.nft-dashboard {
+    display: flex;
+    height: 100vh;
+    background: #121212;
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #e0e0e0;
+}
+
+/* Sidebar */
+.sidebar {
+    background: #1e1e1e;
+    width: 260px;
+    padding: 0 0 32px 0;
+    box-shadow: 2px 0 18px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header,
+.sidebar-nav,
+.premium-box {
+    padding: 24px 24px 0 24px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 26px;
+    color: #00b4ff;
+    margin-bottom: 30px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    display: flex;
+    align-items: center;
+    padding: 13px 0 13px 8px;
+    font-size: 17px;
+    color: #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 3px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-nav li.active,
+.sidebar-nav li:hover {
+    background: #2c2c2c;
+    color: #00b4ff;
+}
+
+.sidebar-nav .icon {
+    font-size: 19px;
+    margin-right: 10px;
+}
+
+/* Premium Tip Box */
+.premium-box {
+    background: #2a2a2a;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin: 50px 16px 0 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.premium-title {
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 7px;
+    color: #fff;
+}
+
+.premium-desc {
+    font-size: 13px;
+    color: #bbb;
+    margin-bottom: 13px;
+}
+
+.premium-btn {
+    background: #00b4ff;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 23px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.premium-btn:hover {
+    background: #0090dd;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    padding: 32px 56px 0 56px;
+    background: #121212;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Generic Content Title */
+.create-title {
+    margin-top: 60px;
+    font-size: 29px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #ffffff;
+}

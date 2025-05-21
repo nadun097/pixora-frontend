@@ -11,6 +11,7 @@ import Marketplace from "./pages/CollectionsPage/NftCollection";
 import DigitalArts from "./pages/DigitalArtsPage/DigitalArtsCollection";
 import Photographs from "./pages/PhotographsCollection/PhotographsCollection";
 import LiveAuctions from  "./pages/LiveAuctionsPage/LiveAuctionsCollection";
+import UserDashboardPage from "./pages/UserDashboardPage/UserDashboardPage.tsx";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/digitalarts" element={<DigitalArts />} />
                 <Route path={"/photographs"} element={<Photographs />} />
                 <Route path={"/liveauctions"} element={<LiveAuctions />} />
+                <Route path="/dashboard" element={<UserDashboardPage />} />
             </Routes>
             <Alert />
         </Router>
