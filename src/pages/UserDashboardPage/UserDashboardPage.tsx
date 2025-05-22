@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./UserDashboardPage.css";
 import CreateNFT from "./CreateNFT";
 import RequestVerification from "./RequestVerification";
+import updateProfile from "./UpdateProfile.tsx";
 
 // Dummy components for demo (replace with your actual content as needed)
 const MyNFTs: React.FC = () => (
@@ -24,22 +25,12 @@ const Tutorials: React.FC = () => (
     </div>
 );
 
-const Account: React.FC = () => (
-    <div className="create-title">
-        Account
-        <br />
-        <div style={{ marginTop: 16, color: "#aaa" }}>
-            (Account settings go here)
-        </div>
-    </div>
-);
-
 const SIDEBAR_ITEMS = [
     { key: "my-nfts", label: "My NFTs", icon: "\uD83D\uDCC6", component: MyNFTs },
     { key: "create-nfts", label: "Create NFTs", icon: "\u271A", component: CreateNFT },
     { key: "request-verification", label: "Request Verification", icon: "\u2709", component: RequestVerification },
     { key: "tutorials", label: "Tutorials", icon: "\uD83D\uDCD8", component: Tutorials },
-    { key: "account", label: "Account", icon: "\uD83D\uDC64", component: Account }
+    { key: "account", label: "Account", icon: "\uD83D\uDC64", component: updateProfile }
 ];
 
 const UserDashboardPage: React.FC = () => {
