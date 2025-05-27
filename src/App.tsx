@@ -11,6 +11,7 @@ import NftDataView from './pages/NftDataView/NftDataView';
 import UserAccount from './pages/UserAccount/UserAccount.tsx';
 import Photographs from "./pages/PhotographsCollection/PhotographsCollection";
 import UserDashboardPage from "./pages/UserDashboardPage/UserDashboardPage.tsx";
+import AdminPage from "./pages/Admin/AdminPage.tsx";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
                 <Route path="/userAccount" element={<UserAccount />} />
                 <Route path={"/photographs"} element={<Photographs />} />
                 <Route path="/dashboard" element={<UserDashboardPage />} />
+                <Route path={"/Admin"} element={<AdminPage/>}/>
             </Routes>
             <Alert />
         </Router>
