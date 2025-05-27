@@ -38,7 +38,7 @@ const CollectionPage = () => {
         <div className="video-container">
           <video
               className="video-background"
-              src="src/assets/videos/(3) NEW YORK CITY _ Cinematic Video _ Sony A7SIII - YouTube - Google Chrome 2025-05-18 22-37-47.mp4"
+              src="src/assets/videos/Photographs_background_video.mp4"
               autoPlay
               loop
               muted
