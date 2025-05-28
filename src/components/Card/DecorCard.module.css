@@ -1,0 +1,130 @@
+:root {
+  --card-width: 110px;
+  --card-height: 140px;
+  --card-gap: 8px;
+  --glow-color: rgb(255, 255, 255);
+  --glow-intensity: 0.2;
+  --glow-spread: 10px;
+}
+
+.Dcard_grid_container {
+  width: 100%;
+  padding: 4rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: hidden; 
+}
+
+.Dcard_grid_container::-webkit-scrollbar {
+  display: none;
+}
+
+.Dcard_grid {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(var(--card-width), 1fr));
+  grid-template-rows: repeat(8, var(--card-height));
+  gap: var(--card-gap);
+  padding: 0 2rem;
+  max-width: calc(var(--card-width) * 20 + var(--card-gap) * 19);
+  margin: 0 auto;
+  overflow: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.Dcard_grid::-webkit-scrollbar {
+  display: none;
+}
+
+.Dcard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  opacity: 0.1;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.Dcard:hover {
+  opacity: 0.4;
+}
+
+.Dcard_inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: floatCard var(--duration) ease-in-out var(--delay) infinite alternate;
+  will-change: transform;
+}
+
+.Dcard_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.Dcard_glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--glow-color);
+  opacity: 0;
+  transition: opacity 3s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(var(--glow-spread));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.Dcard:hover .Dcard_inner {
+  transform: translateZ(20px) scale(1.05);
+  box-shadow: 0 0 24px rgba(254, 255, 255, 0.493);
+  opacity: 1;
+}
+
+.Dcard:hover .Dcard_image {
+  transform: scale(1.1);
+}
+
+.Dcard:hover .Dcard_glow {
+  opacity: var(--glow-intensity);
+}
+
+@media (max-width: 2000px) {
+  .Dcard_grid {
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+    grid-auto-rows: var(--card-height);
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --card-width: 100px;
+    --card-height: 140px;
+    --card-gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --card-width: 80px;
+    --card-height: 120px;
+    --card-gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --card-width: 60px;
+    --card-height: 100px;
+  }
+  .Dcard_grid {
+    padding: 0 1rem;
+  }
+}

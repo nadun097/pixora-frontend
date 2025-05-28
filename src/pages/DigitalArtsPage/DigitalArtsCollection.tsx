@@ -38,7 +38,7 @@ const DigitalArtsCollectionPage = () => {
         <div className="video-container">
           <video
               className="video-background"
-              src="src/assets/videos/(4) Hardwell - Sanctuary (Official Video) - YouTube - Google Chrome 2025-05-18 18-14-10.mp4"
+              src="src/assets/videos/Digital_art_background_video.mp4"
               autoPlay
               loop
               muted

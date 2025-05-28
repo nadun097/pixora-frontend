@@ -24,7 +24,7 @@ const AdminPage: React.FC = () => {
     useEffect(() => {
         const fetchPendingRequests = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/admin/pending-verification-requests');
+                const response = await fetch('https://pixora-f96ef5c321f5.herokuapp.com/api/admin/pending-verification-requests');
                 if (!response.ok) {
                     throw new Error('Failed to fetch pending requests');
                 }
@@ -68,7 +68,7 @@ const AdminPage: React.FC = () => {
 
     const updateStatus = async (id: string, status: string) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/admin/verification-requests/${id}/status?status=${status}`, {
+            const response = await fetch(`https://pixora-f96ef5c321f5.herokuapp.com/api/admin/verification-requests/${id}/status?status=${status}`, {
                 method: 'PUT',
             });
 

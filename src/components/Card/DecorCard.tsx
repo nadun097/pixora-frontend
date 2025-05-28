@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./DecorCard.css";
+import styles from "./DecorCard.module.css";
 
 import img1 from "../../assets/images/img1.jpg";
 import img2 from "../../assets/images/img2.png";
@@ -68,10 +68,10 @@ const Card: React.FC<CardProps> = ({ image, index }) => {
   }, []);
 
   return (
-    <div ref={cardRef} className="Dcard" data-index={index}>
-      <div className="Dcard-inner">
-        <img src={image} alt={`NFT ${index + 1}`} className="Dcard-image" />
-        <div className="Dcard-glow"></div>
+    <div ref={cardRef} className={styles.Dcard} data-index={index}>
+      <div className={styles.Dcard_inner}>
+        <img src={image} alt={`NFT ${index + 1}`} className={styles.Dcard_image} />
+        <div className={styles.Dcard_glow}></div>
       </div>
     </div>
   );
@@ -79,8 +79,8 @@ const Card: React.FC<CardProps> = ({ image, index }) => {
 
 const DecorCard: React.FC = () => {
   return (
-    <div className="Dcard-grid-container">
-      <div className="Dcard-grid">
+    <div className={styles.Dcard_grid_container}>
+      <div className={styles.Dcard_grid}>
         {imageList.map((img, index) => (
           <Card key={`Dcard-${index}`} image={img} index={index} />
         ))}
