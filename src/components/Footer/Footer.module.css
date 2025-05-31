@@ -10,7 +10,7 @@
     z-index: -1;
 }
 
-.footer-container {
+.footer_container {
   max-width: 1700px;
   margin: 0 auto;
   display: flex;
@@ -19,113 +19,110 @@
   gap: rem;
 }
 
-.brand-info {
+.brand_info {
   flex: 1;
   min-width: 250px;
   margin-bottom: 2rem;
 }
 
-.brand-info img {
+.brand_info img {
   height: 200px;
   margin-bottom: 0.5rem;
   color: #ffffff;
 }
 
-.brand-info p {
+.brand_info p {
   color: #b3b3b3;
- 
 }
 
-.footer-links {
+.footer_links {
   display: flex;
   flex-wrap: wrap;
   flex: 1;
   justify-content: space-between;
 }
 
-.links-column {
+.links_column {
   min-width: 100px;
   margin-bottom: 2rem;
 }
 
-.links-column h4 {
+.links_column h4 {
   font-size: 1.1rem;
   margin-bottom: 1rem;
   color: #ffffff;
 }
 
-.links-column ul {
+.links_column ul {
   list-style: none;
   padding: 0;
 }
 
-.links-column li {
+.links_column li {
   margin-bottom: 0.3rem;
 }
 
-.links-column a {
+.links_column a {
   color: #b3b3b3;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.links-column a:hover {
+.links_column a:hover {
   color: #ffffff;
 }
 
-.footer-media-icon {
+.footer_media_icon {
   text-align: center;
   padding: 2rem;
   border-top: 1px solid #333;
   margin-top: 1rem;
   color: #b3b3b3;
-
-
 }
-.footer-media-icon a {
+
+.footer_media_icon a {
   height: 10px;
   width: 5px;
   padding: 5px;
 }
-.footer-media-icon  img{
+.footer_media_icon  img{
   scale:90%;
 }
 
-.footer-bottom {
+.footer_bottom {
   text-align: center;
   color: #b3b3b3;
   font-size: 0.9rem;
-
 }
 
-.footer-bottom-text {
+.footer_bottom_text {
   background-color: rgba(20, 20, 20, 0.63);
   padding: 0.5rem;
 }
 
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
-  .footer-container {
+  .footer_container {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .footer-links {
+  .footer_links {
     flex-direction: column;
     align-items: center;
   }
 
-  .links-column {
+  .links_column {
     width: 100%;
     margin-bottom: 1.5rem;
   }
 
-  .brand-info {
+  .brand_info {
     text-align: center;
   }
 
-  .footer-media-icon {
+  .footer_media_icon {
     padding-top: 1rem;
   }
 }

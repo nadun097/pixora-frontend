@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css'; 
+import styles from './Footer.module.css';
 import Facebook from '../../assets/images/facebook.png'; 
 import Instagram from '../../assets/images/instagram.png';
 import Twitter from '../../assets/images/twitter.png';
@@ -8,15 +8,15 @@ import Pixora from '../../assets/images/pixoraLogoFooter.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="brand-info">
+    <footer className={styles.footer}>
+      <div className={styles.footer_container}>
+        <div className={styles.brand_info}>
         <img src={Pixora} alt="Pixora Logok" />
           <p>A pixel-art NFT brand for digital collectibles and Web3 innovation.</p>
         </div>
 
-        <div className="footer-links">
-          <div className="links-column">
+        <div className={styles.footer_links}>
+          <div className={styles.links_column}>
             <h4>Information</h4>
             <ul>
               <li><a href="/about">About Us</a></li>
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="links-column">
+          <div className={styles.links_column}>
             <h4>Legal & Compliance</h4>
             <ul>
               <li><a href="/terms">Terms of Service</a></li>
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
               <li><a href="/disclaimer">Disclaimer</a></li>
             </ul>
           </div>
-          <div className="links-column">
+          <div className={styles.links_column}>
             <h4>Community Guidelines</h4>
             <ul>
                 <li><a href="/user-agreement">User Agreement</a></li>
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="links-column">
+          <div className={styles.links_column}>
             <h4>Support</h4>
             <ul>
               <li><a href="/faqs">FAQs</a></li>
@@ -57,15 +57,15 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div className="footer-media-icon">
+      <div className={styles.footer_media_icon}>
           <a href="#"><img src={Facebook} alt="Facebook" /></a>
           <a href="#"><img src={Instagram} alt="Instagram" /></a>
           <a href="#"><img src={Twitter} alt="Twitter" /></a>
           <a href="#"><img src={Linkedin} alt="Linkedin" /></a>
       </div>
 
-      <div className="footer-bottom">
-          <div className="footer-bottom-text">
+      <div className={styles.footer_bottom}>
+          <div className={styles.footer_bottom_text}>
             <p>piXora LLC (Pvt) Ltd. – All Rights Reserved.</p>
           </div>
       </div>
