@@ -1,6 +1,10 @@
 # piXora 
 ###### A Blockchain Based Digital Art/Photograph Marketplace
 
+
+![Vite Logo](public/vite.svg) ![React Logo](public/react.svg) <img src="public/typescript.png" alt="TypeScript Logo" width="46" height="34" />
+
+
 Get Started with piXora, a blockchain based digital art/photograph marketplace. piXora is a platform where artists can sell their digital art/photographs and buyers can buy them using cryptocurrency. piXora is built using React, TypeScript, Vite, and Solidity.
 
 ## Features
